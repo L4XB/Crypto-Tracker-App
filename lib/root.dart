@@ -1,4 +1,6 @@
+import 'package:chaining/coins/coins_foreground.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
+import 'package:chaining/profile/profile_foreground.dart';
 import 'package:chaining/trade/trade_foreground.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +17,9 @@ class _RootState extends State<Root> {
   //Seiten
   final List<Widget> _pages = <Widget>[
     const Dashboard(),
-    const Text('Page 2'),
+    const Coins(),
     const Overview(),
-    const Text('Page 4'),
+    const Profile(),
   ];
 
   // Bei click auf ein Tab, wird die ausgewählte Seite aufgerufen.

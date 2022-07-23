@@ -10,26 +10,40 @@ PageController _pageController = PageController();
 PageController contollerpage = PageController();
 PageController _pageControllerSug = PageController();
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+        key: _scaffoldkey,
+        drawer: Drawer(
+          child: ListView(children: []),
+        ),
         body: Container(
             width: double.infinity,
             height: height,
             color: const Color.fromARGB(255, 23, 23, 23),
             child: Column(children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 45, 340, 0),
-                child: IconButton(
-                  color: Colors.white,
-                  icon: Icon(Icons.menu),
-                  iconSize: 30,
-                  onPressed: () {},
+                padding: const EdgeInsets.fromLTRB(0, 45, 340, 10),
+                child: InkWell(
+                  onTap: () {
+                    _scaffoldkey.currentState!.openDrawer();
+                  },
+                  child: Icon(
+                    Icons.menu,
+                    size: 30,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const Text("792,87 €",
