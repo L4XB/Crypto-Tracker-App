@@ -14,6 +14,8 @@ class DrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: onPressed,
       child: Container(
         height: 40,
