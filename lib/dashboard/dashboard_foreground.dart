@@ -1,12 +1,20 @@
+import 'package:chaining/overall_widgets/widgets/dashboard_suggestions_box.dart';
 import 'package:chaining/overall_widgets/widgets/round_button.dart';
 import 'package:flutter/material.dart';
+
+ValueNotifier<List<Widget>> listOfsuggestionsOne =
+    ValueNotifier<List<Widget>>([]);
+ValueNotifier<List<Widget>> listOfsuggestionsTwo =
+    ValueNotifier<List<Widget>>([]);
+PageController _pageController = PageController();
+PageController contollerpage = PageController();
+PageController _pageControllerSug = PageController();
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    PageController contollerpage = PageController();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -126,14 +134,22 @@ class Dashboard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.arrow_left_sharp,
-                        color: Colors.white, size: 35),
+                    InkWell(
+                      onTap: () {
+                        contollerpage.animateToPage(0,
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.easeInOut);
+                      },
+                      child: const Icon(Icons.arrow_left_sharp,
+                          color: Colors.white, size: 35),
+                    ),
                     Container(
                       height: 250,
                       width: 341,
                       child: PageView(
                           physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
+                          controller: contollerpage,
                           children: [
                             Container(
                               height: 250,
@@ -175,11 +191,19 @@ class Dashboard extends StatelessWidget {
                             ),
                           ]),
                     ),
-                    Icon(Icons.arrow_right_sharp,
-                        color: Colors.white, size: 35),
+                    InkWell(
+                      onTap: () {
+                        contollerpage.nextPage(
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.easeInOut);
+                      },
+                      child: Icon(Icons.arrow_right_sharp,
+                          color: Colors.white, size: 35),
+                    ),
                   ],
                 ),
               ),
+              //Suggestions
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Text("Suggestions For You",
@@ -189,59 +213,84 @@ class Dashboard extends StatelessWidget {
                         fontWeight: FontWeight.bold)),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(35, 20, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Row(
                   children: [
+                    InkWell(
+                      onTap: () {
+                        _pageController.animateToPage(0,
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.easeInOut);
+                      },
+                      child: const Icon(Icons.arrow_left_sharp,
+                          color: Colors.white, size: 35),
+                    ),
                     Container(
                       height: 90,
                       width: 341,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      ),
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                            child: Text("Solana",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                )),
+                      child:
+                          PageView(scrollDirection: Axis.horizontal, children: [
+                        ValueListenableBuilder(
+                          valueListenable: listOfsuggestionsOne,
+                          builder: (context, value, child) => PageView(
+                            controller: _pageController,
+                            scrollDirection: Axis.horizontal,
+                            physics: BouncingScrollPhysics(),
+                            children: value as List<Widget>,
                           ),
-                        ],
-                      ),
+                        ),
+                      ]),
                     ),
-                    Icon(Icons.arrow_right_sharp,
-                        color: Colors.white, size: 35),
+                    InkWell(
+                      onTap: () {
+                        _pageController.animateToPage(1,
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.easeInOut);
+                      },
+                      child: Icon(Icons.arrow_right_sharp,
+                          color: Colors.white, size: 35),
+                    ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(35, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child: Row(
                   children: [
+                    InkWell(
+                      onTap: () {
+                        _pageControllerSug.animateToPage(0,
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.easeInOut);
+                      },
+                      child: const Icon(Icons.arrow_left_sharp,
+                          color: Colors.white, size: 35),
+                    ),
                     Container(
                       height: 90,
                       width: 341,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Color.fromARGB(255, 0, 0, 0)),
-                      child: Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                            child: Text("Solana",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                )),
+                      child:
+                          PageView(scrollDirection: Axis.horizontal, children: [
+                        ValueListenableBuilder(
+                          valueListenable: listOfsuggestionsTwo,
+                          builder: (context, value, child) => PageView(
+                            controller: _pageControllerSug,
+                            scrollDirection: Axis.horizontal,
+                            physics: BouncingScrollPhysics(),
+                            children: value as List<Widget>,
                           ),
-                        ],
-                      ),
+                        ),
+                      ]),
                     ),
-                    Icon(Icons.arrow_right_sharp,
-                        color: Colors.white, size: 35),
+                    InkWell(
+                      onTap: () {
+                        _pageControllerSug.animateToPage(1,
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.easeInOut);
+                      },
+                      child: Icon(Icons.arrow_right_sharp,
+                          color: Colors.white, size: 35),
+                    ),
                   ],
                 ),
               ),
