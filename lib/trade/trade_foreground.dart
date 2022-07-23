@@ -1,8 +1,11 @@
 import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/Dashboard/dashboard_foreground.dart';
+import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:flutter/material.dart';
 
 ValueNotifier<List<Widget>> listOfAllCoins = ValueNotifier<List<Widget>>([]);
+final GlobalKey<ScaffoldState> scaffoldkeyCoins = GlobalKey<ScaffoldState>();
 
 class Overview extends StatefulWidget {
   const Overview({Key? key}) : super(key: key);
@@ -40,6 +43,13 @@ class _OverviewState extends State<Overview> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      key: scaffoldkeyCoins,
+      drawer: Container(
+          width: width * 0.6,
+          child: Drawer(
+            backgroundColor: const Color.fromARGB(255, 23, 23, 23),
+            child: DrawerData(),
+          )),
       backgroundColor: const Color.fromARGB(255, 23, 23, 23),
       body: RefreshIndicator(
         onRefresh: _refresh,
@@ -48,12 +58,16 @@ class _OverviewState extends State<Overview> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 45, 340, 0),
-                child: IconButton(
-                  color: Colors.white,
-                  icon: Icon(Icons.menu),
-                  iconSize: 30,
-                  onPressed: () {},
+                padding: const EdgeInsets.fromLTRB(0, 55, 340, 0),
+                child: InkWell(
+                  onTap: () {
+                    scaffoldkeyCoins.currentState!.openDrawer();
+                  },
+                  child: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                    size: 30,
+                  ),
                 ),
               ),
               Padding(

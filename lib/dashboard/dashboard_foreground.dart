@@ -1,4 +1,5 @@
 import 'package:chaining/overall_widgets/widgets/dashboard_suggestions_box.dart';
+import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ ValueNotifier<List<Widget>> listOfsuggestionsTwo =
 PageController _pageController = PageController();
 PageController contollerpage = PageController();
 PageController _pageControllerSug = PageController();
+final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -18,26 +20,28 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-        key: _scaffoldkey,
-        drawer: Drawer(
-          child: ListView(children: []),
-        ),
+        key: scaffoldkey,
+        drawer: Container(
+            width: width * 0.6,
+            child: Drawer(
+              backgroundColor: const Color.fromARGB(255, 23, 23, 23),
+              child: DrawerData(),
+            )),
         body: Container(
             width: double.infinity,
             height: height,
             color: const Color.fromARGB(255, 23, 23, 23),
             child: Column(children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 45, 340, 10),
+                padding: const EdgeInsets.fromLTRB(0, 55, 340, 0),
                 child: InkWell(
                   onTap: () {
-                    _scaffoldkey.currentState!.openDrawer();
+                    scaffoldkey.currentState!.openDrawer();
                   },
                   child: Icon(
                     Icons.menu,
