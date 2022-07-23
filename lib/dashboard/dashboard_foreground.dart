@@ -174,7 +174,7 @@ class _DashboardState extends State<Dashboard> {
                               width: 341,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
-                                  color: Color.fromARGB(255, 0, 0, 0)),
+                                  color: Color.fromARGB(122, 0, 0, 0)),
                               child: Column(
                                 children: const [
                                   Padding(
@@ -193,7 +193,7 @@ class _DashboardState extends State<Dashboard> {
                               width: 341,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
-                                  color: Color.fromARGB(255, 0, 0, 0)),
+                                  color: Color.fromARGB(122, 0, 0, 0)),
                               child: Column(
                                 children: const [
                                   Padding(

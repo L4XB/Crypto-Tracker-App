@@ -36,7 +36,7 @@ class _CoinBoxState extends State<CoinBox> {
         child: Container(
             height: height * 0.1,
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(122, 0, 0, 0),
                 borderRadius: BorderRadius.circular(27)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -45,16 +45,19 @@ class _CoinBoxState extends State<CoinBox> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: Text(widget.coinName,
                           style: TextStyle(
                               fontSize: height * 0.02,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
                     ),
-                    Text(widget.coinAbkuerzung,
-                        style: TextStyle(
-                            fontSize: height * 0.016, color: Colors.white)),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Text(widget.coinAbkuerzung,
+                          style: TextStyle(
+                              fontSize: height * 0.016, color: Colors.white)),
+                    ),
                   ],
                 ),
                 Expanded(

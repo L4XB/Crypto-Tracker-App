@@ -82,8 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         text = false;
                         loading = true;
                       });
+                      //load suggestions from API
                       bool? addSuggestion =
                           await Functions().addSuggestionsToList();
+                      //load Coins from API
                       bool? loadCoinData =
                           await Functions().parseCoinDataToList();
                       Navigator.pushNamed(context, "/root");
