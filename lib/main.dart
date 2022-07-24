@@ -1,6 +1,3 @@
-/// chaining. Copyright (C) 2022 Chaining. All rights reserved.
-/// Autor: Lukas Buck
-
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/login_screen/login_screen_foreground.dart';
 import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
