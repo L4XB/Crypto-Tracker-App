@@ -45,17 +45,11 @@ class Functions {
   }
 
   Future<bool?> addSuggestionsToList() async {
-    var anzahl = 9;
-    var zahlEins = Random().nextInt(anzahl);
-    var zahlZwei = Random().nextInt(anzahl);
-    var zahlDrei = Random().nextInt(anzahl);
-    var zahlVier = Random().nextInt(anzahl);
-    if (zahlEins == zahlZwei) {
-      zahlZwei = Random().nextInt(anzahl);
-    }
-    if (zahlDrei == zahlVier) {
-      zahlVier = Random().nextInt(anzahl);
-    }
+    List<int> numbers = generateRandomNumbers(4, 29);
+    var zahlEins = numbers.elementAt(0);
+    var zahlZwei = numbers.elementAt(1);
+    var zahlDrei = numbers.elementAt(2);
+    var zahlVier = numbers.elementAt(3);
     var coinOne = await Assetsprovider().getspecificAsset(
         (dictonaryOfAllAssets.elementAt(zahlEins)).toLowerCase());
     var coinTwo = await Assetsprovider().getspecificAsset(
@@ -90,5 +84,19 @@ class Functions {
     listOfsuggestionsOne.notifyListeners();
     listOfsuggestionsTwo.notifyListeners();
     return true;
+  }
+
+  List<int> generateRandomNumbers(int anzahl, int max) {
+    List<int> list = [];
+    for (var i = 0; i < anzahl; i++) {
+      var number = Random().nextInt(max);
+      if (!list.contains(number)) {
+        list.add(number);
+      } else {
+        i--;
+      }
+    }
+    print(list);
+    return list;
   }
 }
