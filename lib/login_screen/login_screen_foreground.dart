@@ -1,6 +1,8 @@
 import 'dart:math';
+import 'package:chaining/API_Provider/Assetsprovider.dart';
 import 'package:chaining/API_Provider/Functions/Functions.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
+import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
@@ -84,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         text = false;
                         loading = true;
                       });
+
                       List<CoinHistory> coinHistory = await Historyprovider()
                           .getHistoryOfCoin("ethereum", "h1");
                       //load suggestions from API
