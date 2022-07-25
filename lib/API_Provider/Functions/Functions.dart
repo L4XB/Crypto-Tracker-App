@@ -3,6 +3,7 @@ import 'package:chaining/API_Provider/Assetsprovider.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/ChartData.dart';
+import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/coin_box.dart';
@@ -111,6 +112,8 @@ class Functions {
     List<AssetCoin> topWinner = await Historyprovider().getTopWinner();
 
     for (var i in topWinner) {
+      List<double> min =
+          await Historyprovider().getMinOfCoin(i.id.toString(), "h1");
       listOfTopWinner.value.add(TopWinner(
         nameCoin: i.name.toString(),
         child: SfCartesianChart(
@@ -132,9 +135,10 @@ class Functions {
               borderColor: Colors.transparent,
               majorGridLines: MajorGridLines(width: 0)),
           primaryYAxis: NumericAxis(
-            majorGridLines: MajorGridLines(width: 0),
-            borderWidth: 0,
-          ),
+              majorGridLines: MajorGridLines(width: 0),
+              borderWidth: 0,
+              maximum: min.reduce((curr, next) => curr > next ? curr : next),
+              minimum: min.reduce((curr, next) => curr < next ? curr : next)),
         ),
       ));
     }

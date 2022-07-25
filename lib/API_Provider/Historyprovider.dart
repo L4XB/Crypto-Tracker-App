@@ -66,10 +66,28 @@ class Historyprovider {
       data.add(ChartData(
           x: DateTime.parse(i.date.toString()),
           high: i.priceUsd,
-          low: i.priceUsd! - i.priceUsd! * 0.15,
-          close: i.priceUsd! - i.priceUsd! * 0.15,
+          low: i.priceUsd! - i.priceUsd! * 0.013,
+          close: i.priceUsd! - i.priceUsd! * 0.013,
           open: i.priceUsd));
     }
     return data;
+  }
+
+  Future<List<double>> getMinOfCoin(String id, String interval) async {
+    final Response response;
+    response = await Dio()
+        .get(baseURL + "assets/" + id + "/history?interval=" + interval);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final List<dynamic> datalist = jsonDecode(response.toString())["data"];
+      List<double> coins = [];
+      for (var i = datalist.length - 1; datalist.length - 25 < i; i--) {
+        double min = double.parse(datalist[i]["priceUsd"]);
+        coins.add(min);
+      }
+      print(coins.length);
+      return coins;
+    } else {
+      throw Exception("Failed to get coin");
+    }
   }
 }
