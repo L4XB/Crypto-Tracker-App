@@ -89,9 +89,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       //Top Winner
                       bool? topWinner = await Functions().addTopWinnerToList();
+                      List<AssetCoin> topWinnerCoins =
+                          await Historyprovider().getTopWinner();
 
-                      List<CoinHistory> coinHistory = await Historyprovider()
-                          .getHistoryOfCoin("ethereum", "h1");
+                      List<CoinHistory> winnerOne = await Historyprovider()
+                          .getHistoryOfCoin(
+                              topWinnerCoins.elementAt(0).id.toString(), "h1");
+
+                      List<CoinHistory> winnerTwo = await Historyprovider()
+                          .getHistoryOfCoin(
+                              topWinnerCoins.elementAt(1).id.toString(), "h1");
                       //load suggestions from API
                       bool? addSuggestion =
                           await Functions().addSuggestionsToList();
