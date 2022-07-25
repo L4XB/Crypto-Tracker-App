@@ -38,6 +38,9 @@ dependencies:
   shrink_sidemenu: ^2.0.0+2-null-safety
   dio: ^4.0.6
   loading_animation_widget: ^1.2.0+2
+  simple_candlestick_chart: ^0.1.0
+  syncfusion_flutter_charts: ^20.2.39
+  
 
 dev_dependencies:
   flutter_test:

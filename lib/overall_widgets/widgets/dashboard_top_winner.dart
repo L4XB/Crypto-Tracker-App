@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class TopWinner extends StatelessWidget {
   String nameCoin = "";
-  TopWinner({Key? key, required this.nameCoin}) : super(key: key);
+  Widget child = Container();
+  TopWinner({Key? key, required this.nameCoin, required this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class TopWinner extends StatelessWidget {
                   fontSize: 18,
                 )),
           ),
+          Expanded(child: child),
         ],
       ),
     );

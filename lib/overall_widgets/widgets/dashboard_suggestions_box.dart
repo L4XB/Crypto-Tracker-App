@@ -47,7 +47,7 @@ class _SuggestionsBoxState extends State<SuggestionsBox> {
                     padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     child: Text(widget.coinName,
                         style: TextStyle(
-                            fontSize: height * 0.02,
+                            fontSize: height * 0.019,
                             fontWeight: FontWeight.bold,
                             color: Colors.white)),
                   ),

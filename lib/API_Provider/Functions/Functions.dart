@@ -8,6 +8,9 @@ import 'package:chaining/overall_widgets/widgets/coin_box.dart';
 import 'package:chaining/overall_widgets/widgets/dashboard_suggestions_box.dart';
 import 'package:chaining/overall_widgets/widgets/dashboard_top_winner.dart';
 import 'package:chaining/trade/trade_foreground.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:simple_candlestick_chart/simple_candlestick_chart.dart';
 
 class Functions {
   Future<bool?> parseCoinDataToList() async {
@@ -106,7 +109,8 @@ class Functions {
     List<AssetCoin> topWinner = await Historyprovider().getTopWinner();
 
     for (var i in topWinner) {
-      listOfTopWinner.value.add(TopWinner(nameCoin: i.name.toString()));
+      listOfTopWinner.value
+          .add(TopWinner(nameCoin: i.name.toString(), child: Container()));
     }
     listOfTopWinner.notifyListeners();
 

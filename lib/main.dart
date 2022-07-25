@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:chaining/API_Provider/Chartprovider.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/login_screen/login_screen_foreground.dart';
 import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         "/dashboard": (BuildContext context) => const Dashboard(),
         "/root": (BuildContext context) => const Root(),
       },
-      home: const LoginScreen(),
+      home: LoginScreen(),
     );
   }
 }
