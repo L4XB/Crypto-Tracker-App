@@ -1,10 +1,12 @@
 import 'dart:math';
 import 'package:chaining/API_Provider/Assetsprovider.dart';
+import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/coin_box.dart';
 import 'package:chaining/overall_widgets/widgets/dashboard_suggestions_box.dart';
+import 'package:chaining/overall_widgets/widgets/dashboard_top_winner.dart';
 import 'package:chaining/trade/trade_foreground.dart';
 
 class Functions {
@@ -98,5 +100,16 @@ class Functions {
     }
     print(list);
     return list;
+  }
+
+  Future<bool?> addTopWinnerToList() async {
+    List<AssetCoin> topWinner = await Historyprovider().getTopWinner();
+
+    for (var i in topWinner) {
+      listOfTopWinner.value.add(TopWinner(nameCoin: i.name.toString()));
+    }
+    listOfTopWinner.notifyListeners();
+
+    return true;
   }
 }

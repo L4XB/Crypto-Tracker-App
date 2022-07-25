@@ -87,8 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         loading = true;
                       });
 
-                      List<AssetCoin> topWinner =
-                          await Historyprovider().getTopWinner();
+                      //Top Winner
+                      bool? topWinner = await Functions().addTopWinnerToList();
 
                       List<CoinHistory> coinHistory = await Historyprovider()
                           .getHistoryOfCoin("ethereum", "h1");

@@ -7,9 +7,12 @@ ValueNotifier<List<Widget>> listOfsuggestionsOne =
     ValueNotifier<List<Widget>>([]);
 ValueNotifier<List<Widget>> listOfsuggestionsTwo =
     ValueNotifier<List<Widget>>([]);
+ValueNotifier<List<Widget>> listOfTopWinner = ValueNotifier<List<Widget>>([]);
 PageController _pageController = PageController();
+PageController topWinnerController = PageController();
 PageController contollerpage = PageController();
 PageController _pageControllerSug = PageController();
+PageController _pageControllerSugTwo = PageController();
 final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
 class Dashboard extends StatefulWidget {
@@ -154,7 +157,7 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     InkWell(
                       onTap: () {
-                        contollerpage.animateToPage(0,
+                        topWinnerController.animateToPage(0,
                             duration: const Duration(milliseconds: 1000),
                             curve: Curves.easeInOut);
                       },
@@ -164,54 +167,22 @@ class _DashboardState extends State<Dashboard> {
                     Container(
                       height: 250,
                       width: 341,
-                      child: PageView(
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          controller: contollerpage,
-                          children: [
-                            Container(
-                              height: 250,
-                              width: 341,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  color: Color.fromARGB(122, 0, 0, 0)),
-                              child: Column(
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                    child: Text("Ethereum",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: 250,
-                              width: 341,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  color: Color.fromARGB(122, 0, 0, 0)),
-                              child: Column(
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                    child: Text("Solana",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ]),
+                      child:
+                          PageView(scrollDirection: Axis.horizontal, children: [
+                        ValueListenableBuilder(
+                          valueListenable: listOfTopWinner,
+                          builder: (context, value, child) => PageView(
+                            controller: topWinnerController,
+                            scrollDirection: Axis.horizontal,
+                            physics: BouncingScrollPhysics(),
+                            children: value as List<Widget>,
+                          ),
+                        ),
+                      ]),
                     ),
                     InkWell(
                       onTap: () {
-                        contollerpage.nextPage(
+                        topWinnerController.nextPage(
                             duration: const Duration(milliseconds: 1000),
                             curve: Curves.easeInOut);
                       },
@@ -236,7 +207,7 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     InkWell(
                       onTap: () {
-                        _pageController.animateToPage(0,
+                        _pageControllerSugTwo.animateToPage(0,
                             duration: const Duration(milliseconds: 1000),
                             curve: Curves.easeInOut);
                       },
@@ -251,7 +222,7 @@ class _DashboardState extends State<Dashboard> {
                         ValueListenableBuilder(
                           valueListenable: listOfsuggestionsOne,
                           builder: (context, value, child) => PageView(
-                            controller: _pageController,
+                            controller: _pageControllerSugTwo,
                             scrollDirection: Axis.horizontal,
                             physics: BouncingScrollPhysics(),
                             children: value as List<Widget>,
@@ -261,7 +232,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     InkWell(
                       onTap: () {
-                        _pageController.animateToPage(1,
+                        _pageControllerSugTwo.animateToPage(1,
                             duration: const Duration(milliseconds: 1000),
                             curve: Curves.easeInOut);
                       },
