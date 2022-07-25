@@ -167,18 +167,23 @@ class _DashboardState extends State<Dashboard> {
                     Container(
                       height: 250,
                       width: 341,
-                      child:
-                          PageView(scrollDirection: Axis.horizontal, children: [
-                        ValueListenableBuilder(
-                          valueListenable: listOfTopWinner,
-                          builder: (context, value, child) => PageView(
-                            controller: topWinnerController,
+                      child: Container(
+                        width: 100,
+                        height: 180,
+                        child: PageView(
                             scrollDirection: Axis.horizontal,
-                            physics: BouncingScrollPhysics(),
-                            children: value as List<Widget>,
-                          ),
-                        ),
-                      ]),
+                            children: [
+                              ValueListenableBuilder(
+                                valueListenable: listOfTopWinner,
+                                builder: (context, value, child) => PageView(
+                                  controller: topWinnerController,
+                                  scrollDirection: Axis.horizontal,
+                                  physics: BouncingScrollPhysics(),
+                                  children: value as List<Widget>,
+                                ),
+                              ),
+                            ]),
+                      ),
                     ),
                     InkWell(
                       onTap: () {

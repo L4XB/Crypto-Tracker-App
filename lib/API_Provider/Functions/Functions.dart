@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:chaining/API_Provider/Assetsprovider.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
+import 'package:chaining/Classes/ChartData.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/coin_box.dart';
@@ -11,6 +12,7 @@ import 'package:chaining/trade/trade_foreground.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_candlestick_chart/simple_candlestick_chart.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Functions {
   Future<bool?> parseCoinDataToList() async {
@@ -109,8 +111,32 @@ class Functions {
     List<AssetCoin> topWinner = await Historyprovider().getTopWinner();
 
     for (var i in topWinner) {
-      listOfTopWinner.value
-          .add(TopWinner(nameCoin: i.name.toString(), child: Container()));
+      listOfTopWinner.value.add(TopWinner(
+        nameCoin: i.name.toString(),
+        child: SfCartesianChart(
+          borderColor: Colors.transparent,
+          borderWidth: 0,
+          plotAreaBorderWidth: 0,
+          series: <CandleSeries>[
+            CandleSeries<ChartData, DateTime>(
+              dataSource:
+                  await Historyprovider().getChartData(i.id.toString(), "h1"),
+              xValueMapper: (ChartData sales, _) => sales.x,
+              lowValueMapper: (ChartData sales, _) => sales.low,
+              highValueMapper: (ChartData sales, _) => sales.high,
+              openValueMapper: (ChartData sales, _) => sales.open,
+              closeValueMapper: (ChartData sales, _) => sales.close,
+            )
+          ],
+          primaryXAxis: DateTimeAxis(
+              borderColor: Colors.transparent,
+              majorGridLines: MajorGridLines(width: 0)),
+          primaryYAxis: NumericAxis(
+            majorGridLines: MajorGridLines(width: 0),
+            borderWidth: 0,
+          ),
+        ),
+      ));
     }
     listOfTopWinner.notifyListeners();
 

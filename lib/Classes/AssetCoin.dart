@@ -11,4 +11,5 @@ class AssetCoin {
   double? chnagePercent24Hr;
   double? vwap24Hr;
   double? menge;
+  double? priceMin;
 }
