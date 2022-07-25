@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:chaining/API_Provider/Assetsprovider.dart';
+import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:dio/dio.dart';
 
@@ -30,5 +32,27 @@ class Historyprovider {
     } else {
       throw Exception("Failed to get coin");
     }
+  }
+
+  Future<List<AssetCoin>> getTopWinner() async {
+    List<AssetCoin> coins = [];
+    List<AssetCoin> top = [];
+    coins = await Assetsprovider().getAllAssets();
+    AssetCoin coinOne = coins[0];
+    AssetCoin coinTwo = coins[1];
+
+    for (var i in coins) {
+      if (i.chnagePercent24Hr! > coinOne.chnagePercent24Hr!.toDouble()) {
+        coinOne = i;
+      } else if (i.chnagePercent24Hr! > coinTwo.chnagePercent24Hr!.toDouble()) {
+        coinTwo = i;
+      }
+    }
+    print(coinOne.name);
+    print(coinTwo.name);
+
+    top.add(coinOne);
+    top.add(coinTwo);
+    return top;
   }
 }

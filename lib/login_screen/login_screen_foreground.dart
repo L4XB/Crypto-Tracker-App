@@ -87,6 +87,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         loading = true;
                       });
 
+                      List<AssetCoin> topWinner =
+                          await Historyprovider().getTopWinner();
+
                       List<CoinHistory> coinHistory = await Historyprovider()
                           .getHistoryOfCoin("ethereum", "h1");
                       //load suggestions from API
