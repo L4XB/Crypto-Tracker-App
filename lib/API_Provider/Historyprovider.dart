@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:chaining/API_Provider/Assetsprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
+import 'package:chaining/Classes/ChartData.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:dio/dio.dart';
 
@@ -54,5 +55,21 @@ class Historyprovider {
     top.add(coinOne);
     top.add(coinTwo);
     return top;
+  }
+
+  Future<List<ChartData>> getChartData(String id, String interval) async {
+    List<ChartData> data = [];
+
+    List<CoinHistory> coinData = await getHistoryOfCoin(id, interval);
+
+    for (var i in coinData) {
+      data.add(ChartData(
+          x: DateTime.parse(i.date.toString()),
+          high: i.priceUsd,
+          low: i.priceUsd! - i.priceUsd! * 0.15,
+          close: i.priceUsd! - i.priceUsd! * 0.15,
+          open: i.priceUsd));
+    }
+    return data;
   }
 }
