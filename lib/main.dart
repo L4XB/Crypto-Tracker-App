@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:chaining/API_Provider/Chartprovider.dart';
 import 'package:chaining/coin_detail_info.dart/coin_detail_info_foreground.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/login_screen/login_screen_foreground.dart';

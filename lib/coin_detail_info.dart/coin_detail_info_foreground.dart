@@ -70,7 +70,7 @@ class CoinDetailInfo extends StatelessWidget {
                       children: const [
                         Icon(Icons.arrow_left_outlined,
                             size: 35, color: Colors.white),
-                        Text("Last Month",
+                        Text("Last Day",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
