@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class ChartData {
   ChartData({this.close, this.high, this.low, this.open, this.x});
   final DateTime? x;

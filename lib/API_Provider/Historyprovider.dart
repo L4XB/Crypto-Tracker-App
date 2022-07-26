@@ -66,8 +66,8 @@ class Historyprovider {
       data.add(ChartData(
           x: DateTime.parse(i.date.toString()),
           high: i.priceUsd,
-          low: i.priceUsd! - i.priceUsd! * 0.013,
-          close: i.priceUsd! - i.priceUsd! * 0.013,
+          low: i.priceUsd! - i.priceUsd! * 0.015,
+          close: i.priceUsd! - i.priceUsd! * 0.015,
           open: i.priceUsd));
     }
     return data;

@@ -129,6 +129,8 @@ class Functions {
               highValueMapper: (ChartData sales, _) => sales.high,
               openValueMapper: (ChartData sales, _) => sales.open,
               closeValueMapper: (ChartData sales, _) => sales.close,
+              bullColor: Color.fromARGB(210, 161, 255, 208),
+              bearColor: Color.fromARGB(210, 255, 161, 161),
             )
           ],
           primaryXAxis: DateTimeAxis(
