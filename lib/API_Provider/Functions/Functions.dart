@@ -28,6 +28,7 @@ class Functions {
         prozent: double.parse(
           (i.chnagePercent24Hr)!.toStringAsFixed(6),
         ),
+        coinData: i,
       ));
       listOfAllCoins.notifyListeners();
     }

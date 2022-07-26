@@ -1,3 +1,5 @@
+import 'package:chaining/Classes/AssetCoin.dart';
+
 var dictonaryOfAllAssets = {
   "bitcoin",
   "ethereum",
@@ -30,3 +32,5 @@ var dictonaryOfAllAssets = {
   "cosmos",
   "bitcoin-cash"
 };
+
+AssetCoin currentCoinTrade = AssetCoin();

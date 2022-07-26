@@ -1,3 +1,5 @@
+import 'package:chaining/Classes/AssetCoin.dart';
+import 'package:chaining/globals.dart';
 import 'package:flutter/material.dart';
 
 class CoinBox extends StatefulWidget {
@@ -5,6 +7,7 @@ class CoinBox extends StatefulWidget {
   double coinPrice = 0;
   String coinAbkuerzung = "";
   double prozent = 0;
+  AssetCoin? coinData;
   String? logo;
   CoinBox(
       {Key? key,
@@ -12,7 +15,8 @@ class CoinBox extends StatefulWidget {
       required this.coinName,
       required this.coinPrice,
       this.logo,
-      required this.prozent})
+      required this.prozent,
+      this.coinData})
       : super(key: key);
 
   @override
@@ -32,7 +36,10 @@ class _CoinBoxState extends State<CoinBox> {
         focusColor: Colors.transparent,
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
-        onTap: () async {},
+        onTap: () async {
+          currentCoinTrade = widget.coinData as AssetCoin;
+          Navigator.pushNamed(context, "/coinDetails");
+        },
         child: Container(
             height: height * 0.1,
             decoration: BoxDecoration(

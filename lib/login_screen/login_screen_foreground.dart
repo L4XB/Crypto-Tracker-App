@@ -4,6 +4,7 @@ import 'package:chaining/API_Provider/Functions/Functions.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
+import 'package:chaining/Dashboard/dashboard_foreground.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
 import 'package:flutter/material.dart';
