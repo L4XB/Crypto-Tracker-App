@@ -3,6 +3,8 @@ import 'package:chaining/overall_widgets/widgets/go_back_button.dart';
 import 'package:chaining/overall_widgets/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
+ValueNotifier<List<Widget>> chartlist = ValueNotifier<List<Widget>>([]);
+
 class CoinDetailInfo extends StatelessWidget {
   const CoinDetailInfo({Key? key}) : super(key: key);
 
@@ -20,6 +22,8 @@ class CoinDetailInfo extends StatelessWidget {
                     child: GoBackButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        chartlist.value.clear();
+                        chartlist.notifyListeners();
                       },
                     ),
                   ),
@@ -41,9 +45,22 @@ class CoinDetailInfo extends StatelessWidget {
                     child: Container(
                       height: 250,
                       width: 341,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Color.fromARGB(122, 0, 0, 0)),
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        child: PageView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              ValueListenableBuilder(
+                                valueListenable: chartlist,
+                                builder: (context, value, child) => PageView(
+                                  scrollDirection: Axis.horizontal,
+                                  physics: BouncingScrollPhysics(),
+                                  children: value as List<Widget>,
+                                ),
+                              ),
+                            ]),
+                      ),
                     ),
                   ),
                   Padding(

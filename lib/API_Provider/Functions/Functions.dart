@@ -4,6 +4,7 @@ import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/ChartData.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
+import 'package:chaining/coin_detail_info.dart/coin_detail_info_foreground.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/coin_box.dart';
@@ -147,6 +148,45 @@ class Functions {
       ));
     }
     listOfTopWinner.notifyListeners();
+
+    return true;
+  }
+
+  Future<bool?> buildChart(AssetCoin input) async {
+    List<double> min =
+        await Historyprovider().getMinOfCoin(input.id.toString(), "h1");
+    chartlist.value.add(TopWinner(
+      nameCoin: input.name.toString(),
+      child: SfCartesianChart(
+        borderColor: Colors.transparent,
+        borderWidth: 0,
+        plotAreaBorderWidth: 0,
+        series: <CandleSeries>[
+          CandleSeries<ChartData, DateTime>(
+            dataSource:
+                await Historyprovider().getChartData(input.id.toString(), "h1"),
+            xValueMapper: (ChartData sales, _) => sales.x,
+            lowValueMapper: (ChartData sales, _) => sales.low,
+            highValueMapper: (ChartData sales, _) => sales.high,
+            openValueMapper: (ChartData sales, _) => sales.open,
+            closeValueMapper: (ChartData sales, _) => sales.close,
+            bullColor: Color.fromARGB(210, 161, 255, 208),
+            bearColor: Color.fromARGB(210, 255, 161, 161),
+          )
+        ],
+        primaryXAxis: DateTimeAxis(
+            borderColor: Colors.transparent,
+            majorGridLines: MajorGridLines(width: 0)),
+        primaryYAxis: NumericAxis(
+            majorGridLines: MajorGridLines(width: 0),
+            borderWidth: 0,
+            maximum: min.reduce((curr, next) => curr > next ? curr : next),
+            minimum:
+                min.reduce((curr, next) => curr < next ? curr : next) - 0.05),
+      ),
+    ));
+
+    chartlist.notifyListeners();
 
     return true;
   }

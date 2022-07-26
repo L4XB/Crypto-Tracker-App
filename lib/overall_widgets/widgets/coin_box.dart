@@ -1,3 +1,4 @@
+import 'package:chaining/API_Provider/Functions/Functions.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/globals.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class _CoinBoxState extends State<CoinBox> {
         highlightColor: Colors.transparent,
         onTap: () async {
           currentCoinTrade = widget.coinData as AssetCoin;
+          bool? coinDetails = await Functions().buildChart(currentCoinTrade);
           Navigator.pushNamed(context, "/coinDetails");
         },
         child: Container(
