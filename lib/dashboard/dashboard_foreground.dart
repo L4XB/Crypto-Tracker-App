@@ -169,7 +169,7 @@ class _DashboardState extends State<Dashboard> {
                       width: 341,
                       child: Container(
                         width: 100,
-                        height: 180,
+                        height: 100,
                         child: PageView(
                             scrollDirection: Axis.horizontal,
                             children: [

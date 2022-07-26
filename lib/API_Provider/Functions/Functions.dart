@@ -140,7 +140,8 @@ class Functions {
               majorGridLines: MajorGridLines(width: 0),
               borderWidth: 0,
               maximum: min.reduce((curr, next) => curr > next ? curr : next),
-              minimum: min.reduce((curr, next) => curr < next ? curr : next)),
+              minimum:
+                  min.reduce((curr, next) => curr < next ? curr : next) - 0.05),
         ),
       ));
     }
