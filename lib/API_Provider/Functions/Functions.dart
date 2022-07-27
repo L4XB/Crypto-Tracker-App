@@ -190,4 +190,20 @@ class Functions {
 
     return true;
   }
+
+  void logOut(BuildContext context) {
+    print("<--- LogOut --->");
+    print("deleating Data...");
+    listOfTopWinner.value.clear();
+    listOfAllCoins.value.clear();
+    listOfsuggestionsOne.value.clear();
+    listOfsuggestionsTwo.value.clear();
+    chartlist.value.clear();
+    print("deleating Data Done!");
+    print("navigate to Login Page...");
+    Navigator.pushNamed(context, "/logIn");
+
+    print("Done!");
+    print("<--- LogOut Done --->");
+  }
 }

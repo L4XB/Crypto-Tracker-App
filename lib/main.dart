@@ -1,5 +1,6 @@
 import 'package:chaining/coin_detail_info.dart/coin_detail_info_foreground.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
+import 'package:chaining/invite_firiend/invite_friend_foregound.dart';
 import 'package:chaining/login_screen/login_screen_foreground.dart';
 import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
 import 'package:chaining/reset_password_screen/reset_password_foreground.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         "/resetMail": (BuildContext context) => const ResetMailScreen(),
         "/coinDetails": (BuildContext context) => const CoinDetailInfo(),
         "/dashboard": (BuildContext context) => const Dashboard(),
+        "/invFriend": (BuildContext context) => const InviteFriend(),
         "/root": (BuildContext context) => const Root(),
       },
       home: LoginScreen(),

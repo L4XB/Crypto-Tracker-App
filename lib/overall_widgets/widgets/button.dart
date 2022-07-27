@@ -22,6 +22,9 @@ class _ButtonLogInState extends State<ButtonLogIn> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      focusColor: Colors.transparent,
       onTap: widget.onPressed,
       child: Container(
         height: 45,
