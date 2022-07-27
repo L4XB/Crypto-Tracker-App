@@ -5,6 +5,7 @@ import 'package:chaining/login_screen/login_screen_foreground.dart';
 import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
 import 'package:chaining/reset_password_screen/reset_password_foreground.dart';
 import 'package:chaining/root.dart';
+import 'package:chaining/user_profile/user_profile_foreground.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         "/coinDetails": (BuildContext context) => const CoinDetailInfo(),
         "/dashboard": (BuildContext context) => const Dashboard(),
         "/invFriend": (BuildContext context) => const InviteFriend(),
+        "/editProfile": (BuildContext context) => const UserProfileForeground(),
         "/root": (BuildContext context) => const Root(),
       },
       home: LoginScreen(),

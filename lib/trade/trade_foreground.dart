@@ -5,7 +5,6 @@ import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:flutter/material.dart';
 
 ValueNotifier<List<Widget>> listOfAllCoins = ValueNotifier<List<Widget>>([]);
-final GlobalKey<ScaffoldState> scaffoldkeyCoins = GlobalKey<ScaffoldState>();
 
 class Overview extends StatefulWidget {
   const Overview({Key? key}) : super(key: key);
@@ -24,6 +23,8 @@ class _OverviewState extends State<Overview> {
     print("Refresh Done!");
     return Future.delayed(Duration(seconds: 1), () {});
   }
+
+  final GlobalKey<ScaffoldState> scaffoldkeyCoins = GlobalKey<ScaffoldState>();
 
   Future<void> submittSearch(String name) async {
     print("searching...");
