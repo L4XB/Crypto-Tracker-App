@@ -33,7 +33,12 @@ class DrawerData extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: DrawerButton(
-              color: Colors.white, text: "Profile", onPressed: () {}),
+              color: Colors.white,
+              text: "Profile",
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/editProfile");
+              }),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),

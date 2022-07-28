@@ -113,25 +113,31 @@ class Profile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(30, 6, 0, 0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.settings,
-                            color: Color.fromARGB(255, 122, 90, 229), size: 25),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text("Settings",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(151, 0, 0, 0),
-                          child: Icon(Icons.arrow_right,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/editProfile");
+                      },
+                      child: Row(
+                        children: [
+                          Icon(Icons.settings,
                               color: Color.fromARGB(255, 122, 90, 229),
-                              size: 30),
-                        ),
-                      ],
+                              size: 25),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                            child: Text("Settings",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(151, 0, 0, 0),
+                            child: Icon(Icons.arrow_right,
+                                color: Color.fromARGB(255, 122, 90, 229),
+                                size: 30),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
