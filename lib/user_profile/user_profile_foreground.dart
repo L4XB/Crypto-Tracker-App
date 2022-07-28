@@ -102,7 +102,9 @@ class UserProfileForeground extends StatelessWidget {
               child: ButtonLogIn(
                   color: Color.fromARGB(210, 161, 255, 208),
                   text: "Safe Changes",
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
             )
           ]),
         ),

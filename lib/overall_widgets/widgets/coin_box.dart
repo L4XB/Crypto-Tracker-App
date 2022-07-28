@@ -45,6 +45,11 @@ class _CoinBoxState extends State<CoinBox> {
         child: Container(
             height: height * 0.1,
             decoration: BoxDecoration(
+                border: Border.all(
+                    width: 1,
+                    color: widget.prozent >= 0
+                        ? Color.fromARGB(210, 161, 255, 208)
+                        : const Color.fromARGB(210, 255, 161, 161)),
                 color: Color.fromARGB(122, 0, 0, 0),
                 borderRadius: BorderRadius.circular(27)),
             child: Row(

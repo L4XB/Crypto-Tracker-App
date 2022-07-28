@@ -12,6 +12,9 @@ class TopWinner extends StatelessWidget {
       height: 250,
       width: 341,
       decoration: BoxDecoration(
+          border: Border.all(
+            width: 1,
+          ),
           borderRadius: BorderRadius.circular(25),
           color: Color.fromARGB(122, 0, 0, 0)),
       child: Column(
@@ -20,7 +23,7 @@ class TopWinner extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Text(nameCoin,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Color.fromARGB(210, 161, 255, 208),
                   fontSize: 18,
                 )),
           ),

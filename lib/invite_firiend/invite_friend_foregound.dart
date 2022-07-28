@@ -20,7 +20,15 @@ class _InviteFriendState extends State<InviteFriend> {
   Widget build(BuildContext context) {
     void submitt() {
       print(newLink);
-      FlutterClipboard.copy(controllerInv.text);
+      FlutterClipboard.copy(controllerInv.text).then((_) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Color.fromARGB(80, 84, 84, 84),
+            content: Padding(
+              padding: const EdgeInsets.fromLTRB(95, 0, 0, 0),
+              child: Text('Copied to your clipboard !'),
+            )));
+      });
+      ;
     }
 
     return Scaffold(
@@ -32,6 +40,7 @@ class _InviteFriendState extends State<InviteFriend> {
             padding: const EdgeInsets.fromLTRB(0, 50, 350, 0),
             child: GoBackButton(
               onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 Navigator.pop(context);
               },
             ),
