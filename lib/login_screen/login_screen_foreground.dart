@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:chaining/API_Provider/Assetsprovider.dart';
 import 'package:chaining/API_Provider/Functions/Functions.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
+import 'package:chaining/API_Provider/Userprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:chaining/Dashboard/dashboard_foreground.dart';
@@ -87,6 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         text = false;
                         loading = true;
                       });
+
+                      //Create User
+                      // bool? createUser = await Userprovider().createUser();
 
                       //Top Winner
                       bool? topWinner = await Functions().addTopWinnerToList();
