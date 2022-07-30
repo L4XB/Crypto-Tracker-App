@@ -67,6 +67,9 @@ class _DashboardState extends State<Dashboard> {
                       children: [
                         RoundButton(
                           icon: Icons.add,
+                          onPresse: () {
+                            Navigator.pushNamed(context, "/buy");
+                          },
                         ),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 14, 0, 0),

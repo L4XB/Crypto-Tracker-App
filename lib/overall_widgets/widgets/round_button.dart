@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class RoundButton extends StatelessWidget {
   IconData? icon = Icons.add;
-  RoundButton({Key? key, required this.icon}) : super(key: key);
+  Function()? onPresse;
+  RoundButton({Key? key, required this.icon, this.onPresse}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class RoundButton extends StatelessWidget {
         splashColor: Colors.transparent,
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
-        onTap: () {},
+        onTap: onPresse,
         child: Icon(
           icon,
           size: 30,
