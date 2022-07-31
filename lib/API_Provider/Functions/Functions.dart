@@ -73,21 +73,26 @@ class Functions {
         coinAbkuerzung: coinOne.symbol.toString(),
         coinName: coinOne.name.toString(),
         coinPrice: double.parse(coinOne.priceUsd!.toStringAsFixed(6)),
+        coin: coinOne,
         prozent: double.parse(coinOne.chnagePercent24Hr!.toStringAsFixed(6))));
+
     listOfsuggestionsOne.value.add(SuggestionsBox(
         coinAbkuerzung: coinTwo.symbol.toString(),
         coinName: coinTwo.name.toString(),
         coinPrice: double.parse(coinTwo.priceUsd!.toStringAsFixed(6)),
+        coin: coinTwo,
         prozent: double.parse(coinTwo.chnagePercent24Hr!.toStringAsFixed(6))));
     listOfsuggestionsTwo.value.add(SuggestionsBox(
         coinAbkuerzung: coinThree.symbol.toString(),
         coinName: coinThree.name.toString(),
+        coin: coinThree,
         coinPrice: double.parse(coinThree.priceUsd!.toStringAsFixed(6)),
         prozent:
             double.parse(coinThree.chnagePercent24Hr!.toStringAsFixed(6))));
     listOfsuggestionsTwo.value.add(SuggestionsBox(
         coinAbkuerzung: coinFour.symbol.toString(),
         coinName: coinFour.name.toString(),
+        coin: coinFour,
         coinPrice: double.parse(coinFour.priceUsd!.toStringAsFixed(6)),
         prozent: double.parse(coinFour.chnagePercent24Hr!.toStringAsFixed(6))));
 
@@ -117,6 +122,7 @@ class Functions {
       List<double> min =
           await Historyprovider().getMinOfCoin(i.id.toString(), "h1");
       listOfTopWinner.value.add(TopWinner(
+        coin: i,
         nameCoin: i.name.toString(),
         child: SfCartesianChart(
           borderColor: Colors.transparent,

@@ -1,3 +1,6 @@
+import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/Classes/AssetCoin.dart';
+import 'package:chaining/globals.dart';
 import 'package:flutter/material.dart';
 
 class SuggestionsBox extends StatefulWidget {
@@ -6,12 +9,14 @@ class SuggestionsBox extends StatefulWidget {
   String coinAbkuerzung = "";
   double prozent = 0;
   String? logo;
+  AssetCoin? coin;
   SuggestionsBox(
       {Key? key,
       required this.coinAbkuerzung,
       required this.coinName,
       required this.coinPrice,
       this.logo,
+      this.coin,
       required this.prozent})
       : super(key: key);
 
@@ -30,7 +35,11 @@ class _SuggestionsBoxState extends State<SuggestionsBox> {
       focusColor: Colors.transparent,
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onTap: () async {},
+      onTap: () async {
+        currentCoinTrade = widget.coin as AssetCoin;
+        bool? coinDetails = await Functions().buildChart(currentCoinTrade);
+        Navigator.pushNamed(context, "/coinDetails");
+      },
       child: Container(
           height: 90,
           width: 341,
