@@ -41,6 +41,7 @@ dependencies:
   simple_candlestick_chart: ^0.1.0
   syncfusion_flutter_charts: ^20.2.39
   clipboard: ^0.1.3
+  animated_loading_border: ^0.0.1
   
 
 dev_dependencies:
