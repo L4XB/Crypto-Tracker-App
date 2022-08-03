@@ -5,6 +5,7 @@ import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/API_Provider/Userprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
+import 'package:chaining/Classes/User.dart';
 import 'package:chaining/Dashboard/dashboard_foreground.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
@@ -89,8 +90,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         loading = true;
                       });
 
-                      //Create User
-                      // bool? createUser = await Userprovider().createUser();
+                      //User user = User();
+                      //user.mail = "testing@gmail.com";
+                      //user.password = "123456789";
+                      //user.name = "Lukas";
+                      //user.age = 18;
+
+                      //Userprovider().createUser(user);
 
                       //Top Winner
                       bool? topWinner = await Functions().addTopWinnerToList();

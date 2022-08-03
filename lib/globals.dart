@@ -34,3 +34,4 @@ var dictonaryOfAllAssets = {
 };
 
 AssetCoin currentCoinTrade = AssetCoin();
+String sessionToken = "";
