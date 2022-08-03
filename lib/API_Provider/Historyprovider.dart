@@ -25,10 +25,6 @@ class Historyprovider {
         c.circulatingSupply = double.parse(datalist[i]["circulatingSupply"]);
         coins.add(c);
       }
-      for (var i in coins) {
-        print(i.priceUsd);
-      }
-      print(coins.length);
       return coins;
     } else {
       throw Exception("Failed to get coin");
@@ -49,8 +45,6 @@ class Historyprovider {
         coinTwo = i;
       }
     }
-    print(coinOne.name);
-    print(coinTwo.name);
 
     top.add(coinOne);
     top.add(coinTwo);
@@ -84,7 +78,6 @@ class Historyprovider {
         double min = double.parse(datalist[i]["priceUsd"]);
         coins.add(min);
       }
-      print(coins.length);
       return coins;
     } else {
       throw Exception("Failed to get coin");

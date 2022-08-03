@@ -90,33 +90,49 @@ class _LoginScreenState extends State<LoginScreen> {
                         loading = true;
                       });
 
-                      //User user = User();
-                      //user.mail = "testing@gmail.com";
-                      //user.password = "123456789";
-                      //user.name = "Lukas";
-                      //user.age = 18;
+                      if (controllerPassword.text.isNotEmpty ||
+                          controllerEmail.text.isNotEmpty) {
+                        //Login
+                        bool loginSuccess = await Userprovider().userLogin(
+                                controllerPassword.text, controllerEmail.text)
+                            as bool;
+                        if (loginSuccess) {
+                          //Top Winner
+                          bool? topWinner =
+                              await Functions().addTopWinnerToList();
+                          List<AssetCoin> topWinnerCoins =
+                              await Historyprovider().getTopWinner();
 
-                      //Userprovider().createUser(user);
+                          List<CoinHistory> winnerOne = await Historyprovider()
+                              .getHistoryOfCoin(
+                                  topWinnerCoins.elementAt(0).id.toString(),
+                                  "h1");
 
-                      //Top Winner
-                      bool? topWinner = await Functions().addTopWinnerToList();
-                      List<AssetCoin> topWinnerCoins =
-                          await Historyprovider().getTopWinner();
-
-                      List<CoinHistory> winnerOne = await Historyprovider()
-                          .getHistoryOfCoin(
-                              topWinnerCoins.elementAt(0).id.toString(), "h1");
-
-                      List<CoinHistory> winnerTwo = await Historyprovider()
-                          .getHistoryOfCoin(
-                              topWinnerCoins.elementAt(1).id.toString(), "h1");
-                      //load suggestions from API
-                      bool? addSuggestion =
-                          await Functions().addSuggestionsToList();
-                      //load Coins from API
-                      bool? loadCoinData =
-                          await Functions().parseCoinDataToList();
-                      Navigator.pushNamed(context, "/root");
+                          List<CoinHistory> winnerTwo = await Historyprovider()
+                              .getHistoryOfCoin(
+                                  topWinnerCoins.elementAt(1).id.toString(),
+                                  "h1");
+                          //load suggestions from API
+                          bool? addSuggestion =
+                              await Functions().addSuggestionsToList();
+                          //load Coins from API
+                          bool? loadCoinData =
+                              await Functions().parseCoinDataToList();
+                          setState(() {
+                            text = true;
+                            loading = false;
+                          });
+                          Navigator.pushNamed(context, "/root");
+                        } else {
+                          print("Error by Login");
+                        }
+                      } else {
+                        print("Felder sind leer");
+                        setState(() {
+                          text = true;
+                          loading = false;
+                        });
+                      }
                     },
                     child: Container(
                       height: 45,

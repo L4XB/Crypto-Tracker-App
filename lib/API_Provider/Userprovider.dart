@@ -24,10 +24,10 @@ class Userprovider {
   }
 
   //Login
-  Future<bool?> userLogin(User user) async {
+  Future<bool?> userLogin(String password, String mail) async {
     Response response;
-    response = await Dio().post(baseURL + "/login",
-        data: {"email": user.mail, "password": user.password});
+    response = await Dio()
+        .post(baseURL + "/login", data: {"email": mail, "password": password});
 
     if (response.statusCode == 201 || response.statusCode == 200) {
       print(response);

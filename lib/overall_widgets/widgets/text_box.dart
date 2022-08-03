@@ -28,9 +28,8 @@ class TextBoxLogIn extends StatelessWidget {
             child: TextField(
               style: const TextStyle(color: Colors.white),
               controller: controller,
-              cursorHeight: 20,
               autofocus: false,
-              keyboardType: TextInputType.emailAddress,
+              cursorHeight: 20,
               cursorColor: Colors.white,
               decoration: InputDecoration(
                 contentPadding:
