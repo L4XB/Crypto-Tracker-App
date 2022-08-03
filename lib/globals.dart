@@ -1,4 +1,5 @@
 import 'package:chaining/Classes/AssetCoin.dart';
+import 'package:chaining/Classes/User.dart';
 
 var dictonaryOfAllAssets = {
   "bitcoin",
@@ -35,3 +36,4 @@ var dictonaryOfAllAssets = {
 
 AssetCoin currentCoinTrade = AssetCoin();
 String sessionToken = "";
+User currentUser = User();

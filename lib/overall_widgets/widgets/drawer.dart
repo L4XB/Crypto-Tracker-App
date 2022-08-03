@@ -1,4 +1,6 @@
 import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_Provider/Userprovider.dart';
+import 'package:chaining/globals.dart';
 import 'package:chaining/invite_firiend/invite_friend_foregound.dart';
 import 'package:chaining/overall_widgets/widgets/drawer_buttons.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,7 @@ class DrawerData extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
           child: Text(
-            "Hello Lukas!",
+            "Hello " + currentUser.name.toString() + "!",
             style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
@@ -80,9 +82,16 @@ class DrawerData extends StatelessWidget {
           child: DrawerButton(
               color: Color.fromARGB(210, 255, 161, 161),
               text: "Log Out",
-              onPressed: () {
+              onPressed: () async {
                 Navigator.pop(context);
-                Functions().logOut(context);
+                bool logOut =
+                    await Userprovider().userLogout(sessionToken) as bool;
+
+                if (logOut) {
+                  Functions().logOut(context);
+                } else {
+                  print("Error by LogOut");
+                }
               }),
         ),
       ],

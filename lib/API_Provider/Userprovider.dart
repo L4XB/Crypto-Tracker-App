@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:chaining/Classes/User.dart';
+import 'package:chaining/globals.dart';
 import 'package:dio/dio.dart';
 
 class Userprovider {
@@ -30,6 +31,19 @@ class Userprovider {
         .post(baseURL + "/login", data: {"email": mail, "password": password});
 
     if (response.statusCode == 201 || response.statusCode == 200) {
+      final body = jsonDecode(response.toString())["user"];
+      final bodyToken = jsonDecode(response.toString());
+      User user = User();
+      try {
+        user.age = body["age"];
+        user.mail = body["email"];
+        user.name = body["name"];
+        currentUser = user;
+        sessionToken = bodyToken["token"];
+      } catch (e) {
+        print(e);
+      }
+
       print(response);
       return true;
     }
