@@ -4,6 +4,7 @@ import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/ChartData.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
+import 'package:chaining/Classes/User.dart';
 import 'package:chaining/coin_detail_info.dart/coin_detail_info_foreground.dart';
 import 'package:chaining/dashboard/dashboard_foreground.dart';
 import 'package:chaining/globals.dart';
@@ -200,6 +201,8 @@ class Functions {
     print("<--- LogOut --->");
     print("deleating Data...");
     listOfTopWinner.value.clear();
+    User userToClear = User();
+    currentUser = userToClear;
     listOfAllCoins.value.clear();
     listOfsuggestionsOne.value.clear();
     listOfsuggestionsTwo.value.clear();
@@ -210,5 +213,14 @@ class Functions {
 
     print("Done!");
     print("<--- LogOut Done --->");
+  }
+
+  bool imageStatus() {
+    try {
+      var response = Uri.parse(currentUser.avatarUrl.toString());
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

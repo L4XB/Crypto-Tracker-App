@@ -124,6 +124,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                           Navigator.pushNamed(context, "/root");
                         } else {
+                          setState(() {
+                            text = true;
+                            loading = false;
+                          });
                           print("Error by Login");
                         }
                       } else {

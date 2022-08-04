@@ -1,3 +1,5 @@
+import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_Provider/Userprovider.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/drawer_buttons.dart';
@@ -35,20 +37,20 @@ class Profile extends StatelessWidget {
               ),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Text(
-              "Lukas Buck",
+              currentUser.name.toString(),
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
                   fontWeight: FontWeight.bold),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
             child: Text(
-              "Lukas.Buck@e-mail.de",
+              currentUser.mail.toString(),
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
@@ -218,7 +220,16 @@ class Profile extends StatelessWidget {
             child: DrawerButton(
                 color: Color.fromARGB(210, 255, 161, 161),
                 text: "Log Out",
-                onPressed: () {}),
+                onPressed: () async {
+                  bool logOut =
+                      await Userprovider().userLogout(sessionToken) as bool;
+
+                  if (logOut) {
+                    Functions().logOut(context);
+                  } else {
+                    print("Error by LogOut");
+                  }
+                }),
           ),
         ],
       ),

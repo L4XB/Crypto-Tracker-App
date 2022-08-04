@@ -22,7 +22,7 @@ class DrawerData extends StatelessWidget {
             width: height * 0.11,
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(90)),
-            child: currentUser.avatarUrl != null
+            child: Functions().imageStatus() == true
                 ? ClipRRect(
                     borderRadius: BorderRadius.circular(90),
                     child: Image.network(
