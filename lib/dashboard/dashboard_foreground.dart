@@ -141,7 +141,7 @@ class _DashboardState extends State<Dashboard> {
               const Padding(
                 padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
                 child: Divider(
-                  thickness: 1.3,
+                  thickness: 1,
                   color: Colors.white,
                 ),
               ),
