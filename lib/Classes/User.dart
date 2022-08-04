@@ -3,4 +3,6 @@ class User {
   String? name;
   String? mail;
   String? password;
+  String? id;
+  String? avatarUrl;
 }

@@ -19,6 +19,19 @@ class Userprovider {
     });
 
     if (response.statusCode == 201 || response.statusCode == 200) {
+      final body = jsonDecode(response.toString())["user"];
+      final bodyToken = jsonDecode(response.toString());
+      User user = User();
+      try {
+        user.age = body["age"];
+        user.mail = body["email"];
+        user.name = body["name"];
+        user.id = body["_id"];
+        currentUser = user;
+        sessionToken = bodyToken["token"];
+      } catch (e) {
+        print(e);
+      }
       print(response);
       return true;
     }
@@ -38,6 +51,8 @@ class Userprovider {
         user.age = body["age"];
         user.mail = body["email"];
         user.name = body["name"];
+        user.avatarUrl =
+            "http://h2980175.stratoserver.net/users/" + body["_id"] + "/avatar";
         currentUser = user;
         sessionToken = bodyToken["token"];
       } catch (e) {
