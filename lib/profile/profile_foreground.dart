@@ -1,3 +1,4 @@
+import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/drawer_buttons.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,14 @@ class Profile extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(90)),
+                child: currentUser.avatarUrl != null
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(90),
+                        child: Image.network(
+                          currentUser.avatarUrl.toString(),
+                          fit: BoxFit.cover,
+                        ))
+                    : Container(),
               ),
             ),
           ),

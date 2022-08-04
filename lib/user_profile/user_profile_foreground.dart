@@ -1,3 +1,4 @@
+import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/go_back_button.dart';
 import 'package:chaining/overall_widgets/widgets/user_profile_textbox.dart';
@@ -47,6 +48,14 @@ class UserProfileForeground extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(90)),
+                  child: currentUser.avatarUrl != null
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(90),
+                          child: Image.network(
+                            currentUser.avatarUrl.toString(),
+                            fit: BoxFit.cover,
+                          ))
+                      : Container(),
                 ),
               ),
             ),
