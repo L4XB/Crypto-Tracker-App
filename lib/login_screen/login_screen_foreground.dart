@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             text = true;
                             loading = false;
                           });
-                          Navigator.pushNamed(context, "/root");
+                          Navigator.pushNamed(context, "/introduction");
                         } else {
                           setState(() {
                             text = true;
