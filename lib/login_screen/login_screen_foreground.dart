@@ -1,14 +1,11 @@
-import 'dart:math';
-import 'package:chaining/API_Provider/Assetsprovider.dart';
 import 'package:chaining/API_Provider/Functions/Functions.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/API_Provider/Userprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
-import 'package:chaining/Classes/User.dart';
-import 'package:chaining/Dashboard/dashboard_foreground.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
+import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -20,6 +17,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  Future<void> submittTextbox(String name) async {}
+
   bool text = true;
   bool loading = false;
   @override
@@ -122,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             text = true;
                             loading = false;
                           });
-                          Navigator.pushNamed(context, "/introduction");
+                          Navigator.pushNamed(context, "/root");
                         } else {
                           setState(() {
                             text = true;

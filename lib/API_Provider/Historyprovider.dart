@@ -22,7 +22,6 @@ class Historyprovider {
         c.priceUsd = double.parse(datalist[i]["priceUsd"]);
         c.time = datalist[i]["time"].toString();
         c.date = datalist[i]["date"].toString();
-        c.circulatingSupply = double.parse(datalist[i]["circulatingSupply"]);
         coins.add(c);
       }
       return coins;

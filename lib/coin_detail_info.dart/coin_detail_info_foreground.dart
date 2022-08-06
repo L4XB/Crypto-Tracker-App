@@ -5,9 +5,16 @@ import 'package:flutter/material.dart';
 
 ValueNotifier<List<Widget>> chartlist = ValueNotifier<List<Widget>>([]);
 
-class CoinDetailInfo extends StatelessWidget {
+class CoinDetailInfo extends StatefulWidget {
   const CoinDetailInfo({Key? key}) : super(key: key);
 
+  @override
+  State<CoinDetailInfo> createState() => _CoinDetailInfoState();
+}
+
+class _CoinDetailInfoState extends State<CoinDetailInfo> {
+  PageController contollerpage = PageController();
+  String currentDiscription = "Last Day";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,8 +61,9 @@ class CoinDetailInfo extends StatelessWidget {
                               ValueListenableBuilder(
                                 valueListenable: chartlist,
                                 builder: (context, value, child) => PageView(
+                                  controller: contollerpage,
                                   scrollDirection: Axis.horizontal,
-                                  physics: BouncingScrollPhysics(),
+                                  physics: NeverScrollableScrollPhysics(),
                                   children: value as List<Widget>,
                                 ),
                               ),
@@ -67,17 +75,37 @@ class CoinDetailInfo extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.arrow_left_outlined,
-                            size: 35, color: Colors.white),
-                        Text("Last Day",
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              currentDiscription = "Last Day";
+                            });
+                            contollerpage.animateToPage(0,
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.easeInOut);
+                          },
+                          child: Icon(Icons.arrow_left_outlined,
+                              size: 35, color: Colors.white),
+                        ),
+                        Text(currentDiscription,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             )),
-                        Icon(Icons.arrow_right_outlined,
-                            size: 35, color: Colors.white),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              currentDiscription = "Last Month";
+                            });
+                            contollerpage.animateToPage(1,
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.easeInOut);
+                          },
+                          child: Icon(Icons.arrow_right_outlined,
+                              size: 35, color: Colors.white),
+                        ),
                       ],
                     ),
                   ),

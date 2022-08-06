@@ -22,16 +22,18 @@ class TextBoxLogIn extends StatelessWidget {
             ),
           ],
         ),
-        width: 350,
+        width: 371,
         child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: TextField(
               style: const TextStyle(color: Colors.white),
               controller: controller,
-              autofocus: false,
               cursorHeight: 20,
+              autofocus: false,
+              keyboardType: TextInputType.emailAddress,
               cursorColor: Colors.white,
               decoration: InputDecoration(
+                prefixIconColor: Colors.white,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 18, horizontal: 15),
                 fillColor: Color.fromARGB(212, 0, 0, 0),

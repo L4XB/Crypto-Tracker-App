@@ -148,8 +148,10 @@ class Functions {
           primaryYAxis: NumericAxis(
               majorGridLines: MajorGridLines(width: 0),
               borderWidth: 0,
-              maximum: min.reduce((curr, next) => curr > next ? curr : next),
-              minimum: min.reduce((curr, next) => curr < next ? curr : next)),
+              maximum:
+                  min.reduce((curr, next) => curr > next ? curr : next) + 0.13,
+              minimum:
+                  min.reduce((curr, next) => curr < next ? curr : next) - 0.13),
         ),
       ));
     }
@@ -158,9 +160,9 @@ class Functions {
     return true;
   }
 
-  Future<bool?> buildChart(AssetCoin input) async {
+  Future<bool?> buildChart(AssetCoin input, String interval) async {
     List<double> min =
-        await Historyprovider().getMinOfCoin(input.id.toString(), "h1");
+        await Historyprovider().getMinOfCoin(input.id.toString(), interval);
     chartlist.value.add(TopWinner(
       nameCoin: input.name.toString(),
       child: SfCartesianChart(
@@ -169,8 +171,8 @@ class Functions {
         plotAreaBorderWidth: 0,
         series: <CandleSeries>[
           CandleSeries<ChartData, DateTime>(
-            dataSource:
-                await Historyprovider().getChartData(input.id.toString(), "h1"),
+            dataSource: await Historyprovider()
+                .getChartData(input.id.toString(), interval),
             xValueMapper: (ChartData sales, _) => sales.x,
             lowValueMapper: (ChartData sales, _) => sales.low,
             highValueMapper: (ChartData sales, _) => sales.high,
@@ -186,9 +188,10 @@ class Functions {
         primaryYAxis: NumericAxis(
             majorGridLines: MajorGridLines(width: 0),
             borderWidth: 0,
-            maximum: min.reduce((curr, next) => curr > next ? curr : next),
+            maximum:
+                min.reduce((curr, next) => curr > next ? curr : next + 0.13),
             minimum:
-                min.reduce((curr, next) => curr < next ? curr : next) - 0.05),
+                min.reduce((curr, next) => curr < next ? curr : next) - 0.13),
       ),
     ));
 

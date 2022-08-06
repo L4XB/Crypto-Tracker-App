@@ -46,7 +46,11 @@ class _CoinBoxState extends State<CoinBox> {
             visiblilityLoading = true;
           });
           currentCoinTrade = widget.coinData as AssetCoin;
-          bool? coinDetails = await Functions().buildChart(currentCoinTrade);
+          bool? coinDetails =
+              await Functions().buildChart(currentCoinTrade, "h1");
+          bool? coinDetailsMonth =
+              await Functions().buildChart(currentCoinTrade, "d1");
+
           Navigator.pushNamed(context, "/coinDetails");
           setState(() {
             visiblilityData = true;

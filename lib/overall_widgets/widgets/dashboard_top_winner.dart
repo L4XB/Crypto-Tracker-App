@@ -20,7 +20,6 @@ class _TopWinnerState extends State<TopWinner> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      
       Container(
         height: 250,
         width: 341,
@@ -50,7 +49,11 @@ class _TopWinnerState extends State<TopWinner> {
               visibilityContainerOverly = true;
             });
             currentCoinTrade = widget.coin as AssetCoin;
-            bool? coinDetails = await Functions().buildChart(currentCoinTrade);
+            bool? coinDetails =
+                await Functions().buildChart(currentCoinTrade, "h1");
+            bool? coinDetailsMonth =
+                await Functions().buildChart(currentCoinTrade, "d1");
+
             Navigator.pushNamed(context, "/coinDetails");
             setState(() {
               visibilityContainerOverly = false;
