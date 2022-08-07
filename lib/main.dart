@@ -7,19 +7,21 @@ import 'package:chaining/login_screen/login_screen_foreground.dart';
 import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
 import 'package:chaining/reset_password_screen/reset_password_foreground.dart';
 import 'package:chaining/root.dart';
+import 'package:chaining/theme.dart';
 import 'package:chaining/user_profile/user_profile_foreground.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Chaining());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Chaining extends StatelessWidget {
+  const Chaining({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
         "/logIn": (BuildContext context) => const LoginScreen(),
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         "/editProfile": (BuildContext context) => const UserProfileForeground(),
         "/root": (BuildContext context) => const Root(),
       },
-      home: LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }
