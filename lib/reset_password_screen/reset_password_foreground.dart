@@ -3,9 +3,14 @@ import 'package:chaining/overall_widgets/widgets/go_back_button.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
 import 'package:flutter/material.dart';
 
-class ResetPasswordScreen extends StatelessWidget {
+class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
 
+  @override
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+}
+
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     //Controller
