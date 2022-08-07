@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
-class TextBoxLogIn extends StatefulWidget {
-  String inputText = "";
-
+class PasswordTextBox extends StatefulWidget {
   TextEditingController controller = TextEditingController();
-  TextBoxLogIn({Key? key, required this.controller, required this.inputText})
+  String inputText = "";
+  PasswordTextBox({Key? key, required this.controller, required this.inputText})
       : super(key: key);
 
   @override
-  State<TextBoxLogIn> createState() => _TextBoxLogInState();
+  State<PasswordTextBox> createState() => _PasswordTextBoxState();
 }
 
-class _TextBoxLogInState extends State<TextBoxLogIn> {
+class _PasswordTextBoxState extends State<PasswordTextBox> {
+  bool textobscure = true;
+  Color eyeColor = Colors.white;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +39,30 @@ class _TextBoxLogInState extends State<TextBoxLogIn> {
               autofocus: false,
               keyboardType: TextInputType.emailAddress,
               cursorColor: Colors.white,
+              obscureText: textobscure,
               decoration: InputDecoration(
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 24, 0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () {
+                      setState(() {
+                        textobscure = !textobscure;
+
+                        if (eyeColor == Colors.white) {
+                          eyeColor = Color.fromARGB(210, 161, 255, 208);
+                        } else {
+                          eyeColor = Colors.white;
+                        }
+                      });
+                    },
+                    child: Icon(
+                      Icons.remove_red_eye_outlined,
+                      color: eyeColor,
+                    ),
+                  ),
+                ),
                 prefixIconColor: Colors.white,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 18, horizontal: 15),

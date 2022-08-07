@@ -1,9 +1,11 @@
 import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_Provider/Functions/StatusManager.dart';
 import 'package:chaining/API_Provider/Historyprovider.dart';
 import 'package:chaining/API_Provider/Userprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
+import 'package:chaining/overall_widgets/widgets/password_text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:flutter/material.dart';
@@ -18,16 +20,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Future<void> submittTextbox(String name) async {}
+  //Controller
+  TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerCode = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
 
   bool text = true;
   bool loading = false;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    //Controller
-    TextEditingController controllerEmail = TextEditingController();
-    TextEditingController controllerCode = TextEditingController();
-    TextEditingController controllerPassword = TextEditingController();
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(80, 56, 56, 56),
@@ -62,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     inputText: "Code",
                   ),
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(300, 18, 0, 0),
+                    padding: EdgeInsets.fromLTRB(316, 18, 0, 0),
                     child: Text(
                       "GET",
                       style: TextStyle(
@@ -75,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
-                child: TextBoxLogIn(
+                child: PasswordTextBox(
                   controller: controllerPassword,
                   inputText: "Password",
                 ),
@@ -88,54 +90,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         text = false;
                         loading = true;
                       });
+                      bool currentStatus = await StatusManager().logIn(
+                          controllerEmail.text,
+                          controllerPassword.text,
+                          context);
 
-                      if (controllerPassword.text.isNotEmpty ||
-                          controllerEmail.text.isNotEmpty) {
-                        //Login
-                        bool loginSuccess = await Userprovider().userLogin(
-                                controllerPassword.text, controllerEmail.text)
-                            as bool;
-                        if (loginSuccess) {
-                          //Top Winner
-                          bool? topWinner =
-                              await Functions().addTopWinnerToList();
-                          List<AssetCoin> topWinnerCoins =
-                              await Historyprovider().getTopWinner();
-
-                          List<CoinHistory> winnerOne = await Historyprovider()
-                              .getHistoryOfCoin(
-                                  topWinnerCoins.elementAt(0).id.toString(),
-                                  "h1");
-
-                          List<CoinHistory> winnerTwo = await Historyprovider()
-                              .getHistoryOfCoin(
-                                  topWinnerCoins.elementAt(1).id.toString(),
-                                  "h1");
-                          //load suggestions from API
-                          bool? addSuggestion =
-                              await Functions().addSuggestionsToList();
-                          //load Coins from API
-                          bool? loadCoinData =
-                              await Functions().parseCoinDataToList();
-                          setState(() {
-                            text = true;
-                            loading = false;
-                          });
-                          Navigator.pushNamed(context, "/root");
-                        } else {
-                          setState(() {
-                            text = true;
-                            loading = false;
-                          });
-                          print("Error by Login");
-                        }
-                      } else {
-                        print("Felder sind leer");
-                        setState(() {
-                          text = true;
-                          loading = false;
-                        });
-                      }
+                      setState(() {
+                        text = true;
+                        loading = false;
+                      });
                     },
                     child: Container(
                       height: 45,

@@ -96,10 +96,13 @@ class DrawerData extends StatelessWidget {
                     await Userprovider().userLogout(sessionToken) as bool;
 
                 if (logOut) {
-                  Functions().logOut(context);
-                } else {
-                  print("Error by LogOut");
-                }
+                  bool success = Functions().logOut(context);
+                  if (success) {
+                    Navigator.pushNamed(context, "/logIn");
+                  } else {
+                    print("Error by LogOut");
+                  }
+                } else {}
               }),
         ),
       ],
