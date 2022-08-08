@@ -21,25 +21,29 @@ class StatusManager {
     //Login Successfully?
     if (loginSuccess) {
       //Load Top Winner Today
-      bool? topWinner = await Functions().addTopWinnerToList();
-      List<AssetCoin> topWinnerCoins = await Historyprovider().getTopWinner();
+      try {
+        bool? topWinner = await Functions().addTopWinnerToList();
+        List<AssetCoin> topWinnerCoins = await Historyprovider().getTopWinner();
 
-      //Drawing Graphs
-      List<CoinHistory> winnerOne = await Historyprovider()
-          .getHistoryOfCoin(topWinnerCoins.elementAt(0).id.toString(), "h1");
+        //Drawing Graphs
+        List<CoinHistory> winnerOne = await Historyprovider()
+            .getHistoryOfCoin(topWinnerCoins.elementAt(0).id.toString(), "h1");
 
-      List<CoinHistory> winnerTwo = await Historyprovider()
-          .getHistoryOfCoin(topWinnerCoins.elementAt(1).id.toString(), "h1");
+        List<CoinHistory> winnerTwo = await Historyprovider()
+            .getHistoryOfCoin(topWinnerCoins.elementAt(1).id.toString(), "h1");
 
-      //Load Suggestions
-      bool? addSuggestion = await Functions().addSuggestionsToList();
+        //Load Suggestions
+        bool? addSuggestion = await Functions().addSuggestionsToList();
 
-      //Load Coin Data (Trade Page)
-      bool? loadCoinData = await Functions().parseCoinDataToList();
+        //Load Coin Data (Trade Page)
+        bool? loadCoinData = await Functions().parseCoinDataToList();
 
-      //Navigate to Dashboard
-      Navigator.pushNamed(context, "/root");
-      return true;
+        //Navigate to Dashboard
+        Navigator.pushNamed(context, "/root");
+        return true;
+      } catch (e) {
+        return false;
+      }
     } else {
       //Login was not successfully
       return false;

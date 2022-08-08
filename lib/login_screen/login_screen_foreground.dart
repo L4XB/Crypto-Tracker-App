@@ -21,6 +21,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //TextStatusField
+  String textStatus = "Preview";
+  Color textStatusColor = Colors.transparent;
+  //submitt
   Future<void> submittTextbox(String name) async {}
   //Controller
   TextEditingController controllerEmail = TextEditingController();
@@ -85,9 +89,31 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                child: Center(
+                  child: Text(
+                    textStatus,
+                    style: TextStyle(
+                        color: textStatusColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                   child: InkWell(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
                     onTap: () async {
+                      if (controllerEmail.text.isEmpty ||
+                          controllerPassword.text.isEmpty) {
+                        setState(() {
+                          textStatus = "Please fill out ever field";
+                          textStatusColor = Color.fromARGB(210, 255, 161, 161);
+                        });
+                        return;
+                      }
                       setState(() {
                         text = false;
                         loading = true;
@@ -96,6 +122,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           controllerEmail.text,
                           controllerPassword.text,
                           context);
+
+                      if (!currentStatus) {
+                        setState(() {
+                          textStatus = "False Username or Password";
+                          textStatusColor = Color.fromARGB(210, 255, 161, 161);
+                          controllerCode.text = "";
+                          controllerEmail.text = "";
+                          controllerPassword.text = "";
+                        });
+                      }
 
                       setState(() {
                         text = true;

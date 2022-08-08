@@ -13,6 +13,7 @@ class PasswordTextBox extends StatefulWidget {
 class _PasswordTextBoxState extends State<PasswordTextBox> {
   bool textobscure = true;
   Color eyeColor = Colors.white;
+  Icon iconsuff = Icon(Icons.remove_red_eye_outlined);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,8 +53,10 @@ class _PasswordTextBoxState extends State<PasswordTextBox> {
 
                         if (eyeColor == Colors.white) {
                           eyeColor = Color.fromARGB(210, 161, 255, 208);
+                          iconsuff = const Icon(Icons.remove_red_eye);
                         } else {
                           eyeColor = Colors.white;
+                          iconsuff = const Icon(Icons.remove_red_eye_outlined);
                         }
                       });
                     },
