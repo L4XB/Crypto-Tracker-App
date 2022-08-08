@@ -10,7 +10,4 @@ class Chart {
 
     return coinData;
   }
-
-  //Draw chart
-  void drawChart() {}
 }

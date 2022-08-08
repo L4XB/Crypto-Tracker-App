@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (controllerEmail.text.isEmpty ||
                           controllerPassword.text.isEmpty) {
                         setState(() {
-                          textStatus = "Please fill out ever field";
+                          textStatus = "Please fill out every field";
                           textStatusColor = Color.fromARGB(210, 255, 161, 161);
                         });
                         return;
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       if (!currentStatus) {
                         setState(() {
-                          textStatus = "False Username or Password";
+                          textStatus = "Ops, somthing went wrong";
                           textStatusColor = Color.fromARGB(210, 255, 161, 161);
                           controllerCode.text = "";
                           controllerEmail.text = "";
