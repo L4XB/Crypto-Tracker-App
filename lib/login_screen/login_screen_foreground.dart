@@ -8,6 +8,8 @@ import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/password_text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
+import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
+import 'package:chaining/reset_password_screen/reset_password_foreground.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -153,7 +155,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                 child: ButtonLogIn(
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/resetPassword");
+                    Navigator.of(context)
+                        .push(navigateToPage(ResetPasswordScreen()));
                   },
                   color: const Color.fromARGB(210, 255, 161, 161),
                   text: "Reset Password",
@@ -163,7 +166,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                 child: ButtonLogIn(
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/resetMail");
+                    Navigator.of(context)
+                        .push(navigateToPage(ResetMailScreen()));
                   },
                   color: const Color.fromARGB(210, 255, 161, 161),
                   text: "Change E-mail",
@@ -175,4 +179,22 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+Route navigateToPage(Widget page) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

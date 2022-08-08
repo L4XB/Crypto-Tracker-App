@@ -19,10 +19,10 @@ class ResetMailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 50, 320, 0),
+              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
               child: GoBackButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -30,23 +30,29 @@ class ResetMailScreen extends StatelessWidget {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.fromLTRB(33, 30, 0, 0),
-              child: Text("Change E-mail",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold)),
+              padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+              child: Center(
+                child: Text("Change E-mail",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold)),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(35, 50, 0, 0),
-              child: TextBoxLogIn(
-                  controller: controllerEmail, inputText: "E-mail"),
+              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Center(
+                child: TextBoxLogIn(
+                    controller: controllerEmail, inputText: "E-mail"),
+              ),
             ),
             Stack(children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(35, 30, 0, 0),
-                child: TextBoxLogIn(
-                    controller: controllerEmailCode, inputText: "Code"),
+                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                child: Center(
+                  child: TextBoxLogIn(
+                      controller: controllerEmailCode, inputText: "Code"),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.fromLTRB(330, 48, 0, 0),
@@ -60,15 +66,18 @@ class ResetMailScreen extends StatelessWidget {
               ),
             ]),
             Padding(
-              padding: const EdgeInsets.fromLTRB(35, 30, 0, 0),
-              child:
-                  TextBoxLogIn(controller: controllerPhone, inputText: "Phone"),
+              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+              child: Center(
+                  child: TextBoxLogIn(
+                      controller: controllerPhone, inputText: "Phone")),
             ),
             Stack(children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(35, 30, 0, 0),
-                child: TextBoxLogIn(
-                    controller: controllerPhoneCode, inputText: "Code"),
+                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                child: Center(
+                  child: TextBoxLogIn(
+                      controller: controllerPhoneCode, inputText: "Code"),
+                ),
               ),
               const Padding(
                 padding: EdgeInsets.fromLTRB(330, 48, 0, 0),
@@ -82,16 +91,20 @@ class ResetMailScreen extends StatelessWidget {
               ),
             ]),
             Padding(
-              padding: const EdgeInsets.fromLTRB(35, 30, 0, 0),
-              child: TextBoxLogIn(
-                  controller: controllerMail, inputText: "New E-mail"),
+              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+              child: Center(
+                child: TextBoxLogIn(
+                    controller: controllerMail, inputText: "New E-mail"),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(30, 50, 0, 0),
-              child: ButtonLogIn(
-                  color: Color.fromARGB(210, 161, 255, 208),
-                  text: "Change E-mail",
-                  onPressed: () {}),
+              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Center(
+                child: ButtonLogIn(
+                    color: Color.fromARGB(210, 161, 255, 208),
+                    text: "Change E-mail",
+                    onPressed: () {}),
+              ),
             )
           ],
         ),

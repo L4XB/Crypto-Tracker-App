@@ -32,7 +32,7 @@ class Assetsprovider {
   Future<List<AssetCoin>> getAllAssets() async {
     final Response response;
     print(baseURL + "assets");
-    response = await Dio().get(baseURL + "assets");
+    response = await Dio().get("https://api.coincap.io/v2/assets");
     if (response.statusCode == 200 || response.statusCode == 201) {
       print("Got Data Successfully");
       print("Adding to List ...");
