@@ -1,4 +1,6 @@
 import 'package:chaining/API_AND_DATABASE/Functions/StatusManager.dart';
+import 'package:chaining/API_AND_DATABASE/Local_Database/Database_Models/Usermodel.dart';
+import 'package:chaining/API_AND_DATABASE/Local_Database/Databaseprovider/UserDatabaseProvider.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/password_text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
@@ -100,6 +102,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      try {
+                        UserModel user = UserModel(
+                            email: controllerEmail.text,
+                            id: 5,
+                            name: "Marie",
+                            image: "imagessd");
+
+                        var success = await UserDatabaseProvider()
+                            .insertUserDataIntoDatabase(user);
+                        print(success);
+                        print(await UserDatabaseProvider().readDatabase());
+                      } catch (e) {
+                        print(e);
+                      }
+
                       if (controllerEmail.text.isEmpty ||
                           controllerPassword.text.isEmpty) {
                         setState(() {
