@@ -1,1 +1,3 @@
-class Config {}
+class Config {
+  String databaseName = "";
+}
