@@ -56,7 +56,7 @@ class Functions {
   }
 
   Future<bool?> addSuggestionsToList() async {
-    List<int> numbers = generateRandomNumbers(4, 29);
+    List<int> numbers = generateRandomNumbers(4, 49);
     var zahlEins = numbers.elementAt(0);
     var zahlZwei = numbers.elementAt(1);
     var zahlDrei = numbers.elementAt(2);

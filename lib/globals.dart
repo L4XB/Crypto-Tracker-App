@@ -31,7 +31,27 @@ var dictonaryOfAllAssets = {
   "stellar",
   "monero",
   "cosmos",
-  "bitcoin-cash"
+  "bitcoin-cash",
+  "bitcoin-bep2",
+  "algorand",
+  "vechain",
+  "filecoin",
+  "internet-computer",
+  "decentraland",
+  "the-sandbox",
+  "tezos",
+  "theta",
+  "quant",
+  "axie-infinity",
+  "frax",
+  "elrond-egld",
+  "aave",
+  "trueusd",
+  "zcash",
+  "eos",
+  "bitcoin-sv",
+  "hedera-hashgraph",
+  "okb",
 };
 
 AssetCoin currentCoinTrade = AssetCoin();
