@@ -46,4 +46,44 @@ class UserDatabaseProvider {
           image: maps[i]['image']);
     });
   }
+
+  Future<bool?> deleteAllUser() async {
+    final db = await openUserDatabase("ChainingUser.db", "User");
+    try {
+      for (var i in db["User"]) {
+        await db.delete(
+          'User',
+          where: 'id = ?',
+          whereArgs: [i + 1],
+        );
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<void> deleteUser(int id) async {
+    final db = await openUserDatabase("ChainingUser.db", "User");
+    await db.delete(
+      'User',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  //createSingleUser
+  Future<bool?> createSingleUser(UserModel user) async {
+    try {
+      bool deleteUser = await deleteAllUser() as bool;
+
+      bool inserstUser = await insertUserDataIntoDatabase(user) as bool;
+
+      print(await readDatabase());
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }

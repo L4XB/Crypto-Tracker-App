@@ -102,17 +102,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      UserModel user = UserModel(
+                          image: "Image",
+                          email: "Testmailzwei",
+                          id: 1,
+                          name: "Lukas");
                       try {
-                        UserModel user = UserModel(
-                            email: controllerEmail.text,
-                            id: 5,
-                            name: "Marie",
-                            image: "imagessd");
+                        bool? success =
+                            await UserDatabaseProvider().createSingleUser(user);
 
-                        var success = await UserDatabaseProvider()
-                            .insertUserDataIntoDatabase(user);
                         print(success);
-                        print(await UserDatabaseProvider().readDatabase());
                       } catch (e) {
                         print(e);
                       }
