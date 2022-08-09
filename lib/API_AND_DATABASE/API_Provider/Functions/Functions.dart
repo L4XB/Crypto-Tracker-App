@@ -1,6 +1,6 @@
 import 'dart:math';
-import 'package:chaining/API_Provider/Assetsprovider.dart';
-import 'package:chaining/API_Provider/Historyprovider.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Assetsprovider.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/ChartData.dart';
 import 'package:chaining/Classes/CoinHistory.dart';

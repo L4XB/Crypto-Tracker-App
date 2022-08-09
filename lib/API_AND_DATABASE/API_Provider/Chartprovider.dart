@@ -1,4 +1,4 @@
-import 'package:chaining/API_Provider/Historyprovider.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Historyprovider.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 
 class Chart {

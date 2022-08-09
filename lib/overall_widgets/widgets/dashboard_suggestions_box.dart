@@ -1,5 +1,4 @@
-import 'package:animated_loading_border/animated_loading_border.dart';
-import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/Functions.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/globals.dart';
 import 'package:flutter/material.dart';

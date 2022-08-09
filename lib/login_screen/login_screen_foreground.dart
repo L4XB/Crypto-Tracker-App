@@ -1,13 +1,7 @@
-import 'package:chaining/API_Provider/Functions/Functions.dart';
-import 'package:chaining/API_Provider/Functions/StatusManager.dart';
-import 'package:chaining/API_Provider/Historyprovider.dart';
-import 'package:chaining/API_Provider/Userprovider.dart';
-import 'package:chaining/Classes/AssetCoin.dart';
-import 'package:chaining/Classes/CoinHistory.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/StatusManager.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/password_text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
-import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:chaining/reset_mail_screen/reset_mail_screen_foreground.dart';
 import 'package:chaining/reset_password_screen/reset_password_foreground.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
-import 'package:chaining/API_Provider/Functions/Functions.dart';
-import 'package:chaining/API_Provider/Historyprovider.dart';
-import 'package:chaining/API_Provider/Userprovider.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Historyprovider.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Userprovider.dart';
 import 'package:chaining/Classes/AssetCoin.dart';
 import 'package:chaining/Classes/CoinHistory.dart';
 import 'package:flutter/material.dart';

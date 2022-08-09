@@ -1,5 +1,4 @@
-import 'package:chaining/API_Provider/Functions/Functions.dart';
-import 'package:chaining/Dashboard/dashboard_foreground.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/Functions.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:flutter/material.dart';

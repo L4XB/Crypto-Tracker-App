@@ -1,4 +1,4 @@
-import 'package:chaining/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/Functions.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/go_back_button.dart';
 import 'package:chaining/overall_widgets/widgets/invite_friend_textbox.dart';
@@ -25,7 +25,10 @@ class _InviteFriendState extends State<InviteFriend> {
             backgroundColor: Color.fromARGB(80, 84, 84, 84),
             content: Padding(
               padding: const EdgeInsets.fromLTRB(95, 0, 0, 0),
-              child: Text('Copied to your clipboard !'),
+              child: Text(
+                'Copied to your clipboard !',
+                style: TextStyle(color: Colors.white),
+              ),
             )));
       });
       ;
