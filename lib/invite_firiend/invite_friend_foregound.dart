@@ -1,4 +1,4 @@
-import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_AND_DATABASE/Functions/Functions.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/go_back_button.dart';
 import 'package:chaining/overall_widgets/widgets/invite_friend_textbox.dart';

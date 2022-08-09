@@ -1,4 +1,4 @@
-import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/Functions.dart';
+import 'package:chaining/API_AND_DATABASE/Functions/Functions.dart';
 import 'package:chaining/API_AND_DATABASE/API_Provider/Userprovider.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';

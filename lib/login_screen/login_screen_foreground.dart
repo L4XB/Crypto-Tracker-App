@@ -1,4 +1,4 @@
-import 'package:chaining/API_AND_DATABASE/API_Provider/Functions/StatusManager.dart';
+import 'package:chaining/API_AND_DATABASE/Functions/StatusManager.dart';
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/password_text_box.dart';
 import 'package:chaining/overall_widgets/widgets/text_box.dart';
