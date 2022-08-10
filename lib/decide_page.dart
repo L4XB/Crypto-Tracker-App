@@ -65,13 +65,9 @@ class _DecidePageState extends State<DecidePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-          height: height,
-          width: width,
-          child: Image.asset(
-            "assets/images/splashscreen.png",
-            fit: BoxFit.cover,
-          )),
-    );
+        backgroundColor: const Color.fromARGB(255, 23, 23, 23),
+        body: Center(
+            child: Text("chaining.",
+                style: TextStyle(color: Colors.white, fontSize: 40))));
   }
 }
