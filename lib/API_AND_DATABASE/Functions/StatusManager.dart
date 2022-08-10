@@ -41,6 +41,8 @@ class StatusManager {
         //Load Coin Data (Trade Page)
         bool? loadCoinData = await Functions().parseCoinDataToList();
 
+        print(await UserDatabaseProvider().readDatabase());
+
         //Add Data to Local Database
         UserModel user = UserModel(
             image: currentUser.avatarUrl.toString(),

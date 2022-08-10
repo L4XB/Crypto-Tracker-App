@@ -1,5 +1,6 @@
 import 'package:chaining/API_AND_DATABASE/Functions/Functions.dart';
 import 'package:chaining/API_AND_DATABASE/API_Provider/Userprovider.dart';
+import 'package:chaining/API_AND_DATABASE/Local_Database/Databaseprovider/UserDatabaseProvider.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/invite_firiend/invite_friend_foregound.dart';
 import 'package:chaining/overall_widgets/widgets/drawer_buttons.dart';
@@ -98,6 +99,7 @@ class DrawerData extends StatelessWidget {
                 if (logOut) {
                   bool success = Functions().logOut(context);
                   if (success) {
+                    UserDatabaseProvider().deleteUser(1);
                     Navigator.pushNamed(context, "/logIn");
                   } else {
                     print("Error by LogOut");
