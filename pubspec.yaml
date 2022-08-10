@@ -44,6 +44,7 @@ dependencies:
   clipboard: ^0.1.3
   animated_loading_border: ^0.0.1
   introduction_slider: ^1.0.0
+  rive: ^0.9.1
   
 
 dev_dependencies:
