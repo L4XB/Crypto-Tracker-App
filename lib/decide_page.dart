@@ -31,7 +31,7 @@ class _DecidePageState extends State<DecidePage> {
         //LoadData
         currentUser.name = dataBaseData.first.name;
         currentUser.avatarUrl = dataBaseData.first.image;
-        currentUser.mail = dataBaseData.first.name;
+        currentUser.mail = dataBaseData.first.email;
         sessionToken = dataBaseData.first.sessionToken;
         bool? topWinner = await Functions().addTopWinnerToList();
         List<AssetCoin> topWinnerCoins = await Historyprovider().getTopWinner();

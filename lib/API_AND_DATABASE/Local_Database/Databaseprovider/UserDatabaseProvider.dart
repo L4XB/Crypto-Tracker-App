@@ -64,6 +64,7 @@ class UserDatabaseProvider {
     }
   }
 
+  //Delete single User
   Future<void> deleteUser(int id) async {
     final db = await openUserDatabase("chainingUser.db", "User");
     await db.delete(

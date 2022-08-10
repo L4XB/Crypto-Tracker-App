@@ -4,9 +4,6 @@ import 'package:chaining/API_AND_DATABASE/Local_Database/Databaseprovider/UserDa
 class DatabaseFunctions {
   Future<bool> getStatusOfCurrentUser() async {
     var currenData = await UserDatabaseProvider().readDatabase();
-    List<UserModel> compareData = [];
-    print(currenData);
-    print(compareData);
     if (currenData.isEmpty) {
       return false;
     } else {
