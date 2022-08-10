@@ -48,6 +48,7 @@ class StatusManager {
             image: currentUser.avatarUrl.toString(),
             email: currentUser.mail.toString(),
             id: 1,
+            sessionToken: sessionToken,
             name: currentUser.name.toString());
 
         bool? success = await UserDatabaseProvider().createSingleUser(user);

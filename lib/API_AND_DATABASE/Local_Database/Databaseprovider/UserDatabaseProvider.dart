@@ -14,7 +14,7 @@ class UserDatabaseProvider {
         return db.execute(
           'CREATE TABLE ' +
               tableName +
-              '(id INTEGER PRIMARY KEY, name TEXT, email TEXT, image TEXT)',
+              '(id INTEGER PRIMARY KEY, name TEXT, email TEXT, image TEXT, sessionToken TEXT)',
         );
       },
       version: 1,
@@ -24,7 +24,7 @@ class UserDatabaseProvider {
 
   //Insert Data
   Future<bool?> insertUserDataIntoDatabase(UserModel user) async {
-    final db = await openUserDatabase("ChainingUser.db", "User");
+    final db = await openUserDatabase("chainingUser.db", "User");
     await db.insert(
       'User',
       user.toMap(),
@@ -35,7 +35,7 @@ class UserDatabaseProvider {
 
   //Read Database
   Future<List<UserModel>> readDatabase() async {
-    final db = await openUserDatabase("ChainingUser.db", "User");
+    final db = await openUserDatabase("chainingUser.db", "User");
     final List<Map<String, dynamic>> maps = await db.query('User');
 
     return List.generate(maps.length, (i) {
@@ -43,12 +43,13 @@ class UserDatabaseProvider {
           id: maps[i]['id'],
           name: maps[i]['name'],
           email: maps[i]['email'],
+          sessionToken: maps[i]["sessionToken"],
           image: maps[i]['image']);
     });
   }
 
   Future<bool?> deleteAllUser() async {
-    final db = await openUserDatabase("ChainingUser.db", "User");
+    final db = await openUserDatabase("chainingUser.db", "User");
     try {
       for (var i in db["User"]) {
         await db.delete(
@@ -64,7 +65,7 @@ class UserDatabaseProvider {
   }
 
   Future<void> deleteUser(int id) async {
-    final db = await openUserDatabase("ChainingUser.db", "User");
+    final db = await openUserDatabase("chainingUser.db", "User");
     await db.delete(
       'User',
       where: 'id = ?',
