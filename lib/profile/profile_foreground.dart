@@ -1,5 +1,6 @@
 import 'package:chaining/API_AND_DATABASE/Functions/Functions.dart';
 import 'package:chaining/API_AND_DATABASE/API_Provider/Userprovider.dart';
+import 'package:chaining/API_AND_DATABASE/Local_Database/Databaseprovider/UserDatabaseProvider.dart';
 import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/drawer_buttons.dart';
@@ -226,6 +227,7 @@ class Profile extends StatelessWidget {
 
                   if (logOut) {
                     Functions().logOut(context);
+                    UserDatabaseProvider().deleteUser(1);
                   } else {
                     print("Error by LogOut");
                   }
