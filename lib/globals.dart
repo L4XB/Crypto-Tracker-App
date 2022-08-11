@@ -57,3 +57,4 @@ var dictonaryOfAllAssets = {
 AssetCoin currentCoinTrade = AssetCoin();
 String sessionToken = "";
 User currentUser = User();
+bool isActivated = false;

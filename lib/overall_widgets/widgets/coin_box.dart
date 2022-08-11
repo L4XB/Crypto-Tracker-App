@@ -41,6 +41,7 @@ class _CoinBoxState extends State<CoinBox> {
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
         onTap: () async {
+          isActivated = true;
           setState(() {
             visiblilityData = false;
             visiblilityLoading = true;

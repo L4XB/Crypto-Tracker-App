@@ -47,6 +47,8 @@ class _TopWinnerState extends State<TopWinner> {
       ),
       InkWell(
           onTap: () async {
+            if (isActivated) return;
+            isActivated = true;
             setState(() {
               visibilityContainerOverly = true;
             });

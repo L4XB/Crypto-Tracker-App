@@ -1,4 +1,5 @@
 import 'package:chaining/globals.dart' as globals;
+import 'package:chaining/globals.dart';
 import 'package:chaining/overall_widgets/widgets/go_back_button.dart';
 import 'package:chaining/overall_widgets/widgets/round_button.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ class _CoinDetailInfoState extends State<CoinDetailInfo> {
                     padding: const EdgeInsets.fromLTRB(0, 50, 350, 0),
                     child: GoBackButton(
                       onPressed: () {
+                        isActivated = false;
                         Navigator.pop(context);
                         chartlist.value.clear();
                         chartlist.notifyListeners();

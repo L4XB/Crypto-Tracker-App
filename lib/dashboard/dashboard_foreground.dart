@@ -105,7 +105,7 @@ class _DashboardState extends State<Dashboard> {
                     Column(
                       children: [
                         RoundButton(
-                          icon: Icons.output_sharp,
+                          icon: Icons.arrow_forward_outlined,
                         ),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 14, 0, 0),

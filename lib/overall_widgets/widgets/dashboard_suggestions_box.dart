@@ -40,6 +40,7 @@ class _SuggestionsBoxState extends State<SuggestionsBox> {
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () async {
+        isActivated = true;
         setState(() {
           visiblilityData = false;
           visiblilityLoading = true;
