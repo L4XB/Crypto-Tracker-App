@@ -1,3 +1,4 @@
+import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -87,6 +88,21 @@ class Coins extends StatelessWidget {
                     fontSize: 20,
                   )),
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+              child: Container(
+                  height: height * 0.2,
+                  child: Image.asset("assets/images/sparschwein.png")),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+              child: ButtonLogIn(
+                  color: Color.fromARGB(210, 161, 255, 208),
+                  text: "Buy your first Coins",
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/buy");
+                  }),
+            )
           ])),
     );
   }
