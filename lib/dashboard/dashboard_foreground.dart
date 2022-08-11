@@ -53,7 +53,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ),
               ),
-              const Text("792,87 €",
+              const Text("0 \$",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 39,
@@ -122,12 +122,10 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     Column(
                       children: [
-                        RoundButton(
-                          icon: Icons.compare_arrows,
-                        ),
+                        RoundButton(icon: Icons.more_horiz),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
-                          child: Text("Convert",
+                          child: Text("More",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 13,
@@ -147,7 +145,7 @@ class _DashboardState extends State<Dashboard> {
               ),
               const Padding(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Text("Top Winner Today",
+                child: Text("Top Mover",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -203,7 +201,7 @@ class _DashboardState extends State<Dashboard> {
               //Suggestions
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Text("Suggestions For You",
+                child: Text("Suggestions",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,

@@ -129,17 +129,15 @@ class Functions {
           borderColor: Colors.transparent,
           borderWidth: 0,
           plotAreaBorderWidth: 0,
-          series: <CandleSeries>[
-            CandleSeries<ChartData, DateTime>(
+          series: <SplineSeries>[
+            SplineSeries<ChartData, DateTime>(
               dataSource:
                   await Historyprovider().getChartData(i.id.toString(), "h1"),
               xValueMapper: (ChartData sales, _) => sales.x,
-              lowValueMapper: (ChartData sales, _) => sales.low,
-              highValueMapper: (ChartData sales, _) => sales.high,
-              openValueMapper: (ChartData sales, _) => sales.open,
-              closeValueMapper: (ChartData sales, _) => sales.close,
-              bullColor: Color.fromARGB(210, 161, 255, 208),
-              bearColor: Color.fromARGB(210, 255, 161, 161),
+              yValueMapper: (datum, index) => datum.high,
+              color: i.chnagePercent24Hr!.toDouble() > 0
+                  ? Color.fromARGB(210, 161, 255, 208)
+                  : Color.fromARGB(210, 255, 161, 161),
             )
           ],
           primaryXAxis: DateTimeAxis(
@@ -164,22 +162,21 @@ class Functions {
     List<double> min =
         await Historyprovider().getMinOfCoin(input.id.toString(), interval);
     chartlist.value.add(TopWinner(
+      coin: input,
       nameCoin: input.name.toString(),
       child: SfCartesianChart(
         borderColor: Colors.transparent,
         borderWidth: 0,
         plotAreaBorderWidth: 0,
-        series: <CandleSeries>[
-          CandleSeries<ChartData, DateTime>(
+        series: <SplineSeries>[
+          SplineSeries<ChartData, DateTime>(
             dataSource: await Historyprovider()
                 .getChartData(input.id.toString(), interval),
             xValueMapper: (ChartData sales, _) => sales.x,
-            lowValueMapper: (ChartData sales, _) => sales.low,
-            highValueMapper: (ChartData sales, _) => sales.high,
-            openValueMapper: (ChartData sales, _) => sales.open,
-            closeValueMapper: (ChartData sales, _) => sales.close,
-            bullColor: Color.fromARGB(210, 161, 255, 208),
-            bearColor: Color.fromARGB(210, 255, 161, 161),
+            yValueMapper: (datum, index) => datum.high,
+            color: currentCoinTrade.chnagePercent24Hr!.toDouble() > 0
+                ? Color.fromARGB(210, 161, 255, 208)
+                : Color.fromARGB(210, 255, 161, 161),
           )
         ],
         primaryXAxis: DateTimeAxis(

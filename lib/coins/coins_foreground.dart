@@ -38,7 +38,7 @@ class Coins extends StatelessWidget {
                 ),
               ),
             ),
-            const Text("792,87 €",
+            const Text("0 \$",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 39,

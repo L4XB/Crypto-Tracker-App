@@ -34,8 +34,10 @@ class _TopWinnerState extends State<TopWinner> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Text(widget.nameCoin,
-                  style: const TextStyle(
-                    color: Color.fromARGB(210, 161, 255, 208),
+                  style: TextStyle(
+                    color: widget.coin!.chnagePercent24Hr!.toDouble() > 0
+                        ? Color.fromARGB(210, 161, 255, 208)
+                        : Color.fromARGB(210, 255, 161, 161),
                     fontSize: 18,
                   )),
             ),
