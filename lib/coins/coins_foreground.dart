@@ -1,6 +1,7 @@
 import 'package:chaining/overall_widgets/widgets/button.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 final GlobalKey<ScaffoldState> scaffoldkeyCoins = GlobalKey<ScaffoldState>();
 
@@ -39,63 +40,14 @@ class Coins extends StatelessWidget {
                 ),
               ),
             ),
-            const Text("0 \$",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 39,
-                )),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 140, 0, 0),
               child: Container(
-                height: 250,
-                width: 341,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    color: Color.fromARGB(122, 0, 0, 0)),
-                child: Column(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                    ),
-                  ],
-                ),
-              ),
+                  height: height * 0.3,
+                  child: Image.asset("assets/images/einkaufswagen.png")),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.arrow_left_outlined,
-                      size: 35, color: Colors.white),
-                  Text("Last Month",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      )),
-                  Icon(Icons.arrow_right_outlined,
-                      size: 35, color: Colors.white),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-              child: Text("Your Coins",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-              child: Container(
-                  height: height * 0.2,
-                  child: Image.asset("assets/images/sparschwein.png")),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
               child: ButtonLogIn(
                   color: Color.fromARGB(210, 161, 255, 208),
                   text: "Buy your first Coins",
