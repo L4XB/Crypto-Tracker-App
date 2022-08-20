@@ -4,12 +4,12 @@ class TextBoxPrefix extends StatelessWidget {
   String inputText = "";
   Icon prexifIcon = Icon(Icons.search);
   TextEditingController controller = TextEditingController();
-  Function(String)? submitt;
+  Function(String)? onChange;
   TextBoxPrefix(
       {Key? key,
       required this.controller,
       required this.inputText,
-      required this.submitt,
+      this.onChange,
       required this.prexifIcon})
       : super(key: key);
 
@@ -33,7 +33,7 @@ class TextBoxPrefix extends StatelessWidget {
         child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: TextField(
-              onSubmitted: submitt,
+              onChanged: onChange,
               style: const TextStyle(color: Colors.white),
               controller: controller,
               cursorHeight: 20,

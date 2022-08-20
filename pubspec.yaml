@@ -45,6 +45,7 @@ dependencies:
   animated_loading_border: ^0.0.1
   introduction_slider: ^1.0.0
   rive: ^0.9.1
+  responsive_framework: ^0.2.0
   
 
 dev_dependencies:

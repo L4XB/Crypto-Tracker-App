@@ -12,6 +12,7 @@ import 'package:chaining/root.dart';
 import 'package:chaining/theme.dart';
 import 'package:chaining/user_profile/user_profile_foreground.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(const Chaining());

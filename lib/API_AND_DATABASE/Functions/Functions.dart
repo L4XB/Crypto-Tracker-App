@@ -40,7 +40,7 @@ class Functions {
   Future<bool?> searchForACoinAndParseToList(String id) async {
     AssetCoin coin = AssetCoin();
     coin = await Assetsprovider().getspecificAsset(id);
-    listOfAllCoins.value.clear();
+
     listOfAllCoins.value.add(CoinBox(
       coinAbkuerzung: coin.symbol.toString(),
       coinName: coin.name.toString(),
@@ -51,12 +51,12 @@ class Functions {
         (coin.chnagePercent24Hr)!.toStringAsFixed(6),
       ),
     ));
-    listOfAllCoins.notifyListeners();
+
     return true;
   }
 
   Future<bool?> addSuggestionsToList() async {
-    List<int> numbers = generateRandomNumbers(4, 49);
+    List<int> numbers = generateRandomNumbers(4, 100);
     var zahlEins = numbers.elementAt(0);
     var zahlZwei = numbers.elementAt(1);
     var zahlDrei = numbers.elementAt(2);
@@ -219,5 +219,16 @@ class Functions {
     } catch (e) {
       return false;
     }
+  }
+
+  List<String> searchForACoin(String snipped) {
+    List<String> coins = [];
+    for (var i in dictonaryOfAllAssets) {
+      if (i.toLowerCase().contains(snipped.toLowerCase())) {
+        coins.add(i);
+      } else {}
+    }
+
+    return coins;
   }
 }

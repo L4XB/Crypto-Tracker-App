@@ -41,7 +41,7 @@ class Historyprovider {
         coinOne = i;
       } else if (i.chnagePercent24Hr! > coinTwo.chnagePercent24Hr!.toDouble()) {
         coinTwo = i;
-      }
+      } else {}
     }
 
     top.add(coinOne);

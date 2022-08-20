@@ -30,11 +30,28 @@ class _OverviewState extends State<Overview> {
     if (search.text.isEmpty) {
       _refresh();
     } else {
+      listOfAllCoins.value.clear();
       bool searchResult = await Functions()
           .searchForACoinAndParseToList((search.text).toLowerCase()) as bool;
     }
 
     print("Done!");
+  }
+
+  Future<void> searchforACoin(String name) async {
+    listOfAllCoins.value.clear();
+    String currentSearch = search.text;
+    List<String> searchResults = Functions().searchForACoin(currentSearch);
+    if (searchResults.isEmpty) {
+      _refresh();
+      return;
+    }
+
+    for (var i in searchResults) {
+      bool searchsuccess =
+          await Functions().searchForACoinAndParseToList(i) as bool;
+    }
+    listOfAllCoins.notifyListeners();
   }
 
   @override
@@ -52,6 +69,8 @@ class _OverviewState extends State<Overview> {
           )),
       backgroundColor: const Color.fromARGB(255, 23, 23, 23),
       body: RefreshIndicator(
+        backgroundColor: Colors.white,
+        color: Color.fromARGB(255, 23, 23, 23),
         onRefresh: _refresh,
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -73,7 +92,7 @@ class _OverviewState extends State<Overview> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                 child: TextBoxPrefix(
-                    submitt: submittSearch,
+                    onChange: searchforACoin,
                     controller: search,
                     inputText: "Search For A Coin",
                     prexifIcon: Icon(
