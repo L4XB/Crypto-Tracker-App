@@ -2,6 +2,7 @@ import 'package:chaining/API_AND_DATABASE/Functions/Functions.dart';
 import 'package:chaining/overall_widgets/widgets/drawer.dart';
 import 'package:chaining/overall_widgets/widgets/text_box_prefix.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 ValueNotifier<List<Widget>> listOfAllCoins = ValueNotifier<List<Widget>>([]);
 
@@ -13,10 +14,19 @@ class Overview extends StatefulWidget {
 }
 
 class _OverviewState extends State<Overview> {
+  bool isLoading = false;
   TextEditingController search = TextEditingController();
   Future<void> _refresh() async {
     print("refreshing...");
+    setState(() {
+      isLoading = true;
+      ;
+    });
     listOfAllCoins.value.clear();
+    setState(() {
+      isLoading = false;
+    });
+    listOfAllCoins.notifyListeners();
     bool bestaetigung = await Functions().parseCoinDataToList() as bool;
     listOfAllCoins.notifyListeners();
     print("Refresh Done!");
@@ -28,7 +38,7 @@ class _OverviewState extends State<Overview> {
   Future<void> submittSearch(String name) async {
     print("searching...");
     if (search.text.isEmpty) {
-      _refresh();
+      await _refresh();
     } else {
       listOfAllCoins.value.clear();
       bool searchResult = await Functions()
@@ -40,10 +50,17 @@ class _OverviewState extends State<Overview> {
 
   Future<void> searchforACoin(String name) async {
     listOfAllCoins.value.clear();
+    listOfAllCoins.notifyListeners();
+    setState(() {
+      isLoading = true;
+    });
     String currentSearch = search.text;
     List<String> searchResults = Functions().searchForACoin(currentSearch);
     if (searchResults.isEmpty) {
-      _refresh();
+      await _refresh();
+      setState(() {
+        isLoading = false;
+      });
       return;
     }
 
@@ -51,6 +68,9 @@ class _OverviewState extends State<Overview> {
       bool searchsuccess =
           await Functions().searchForACoinAndParseToList(i) as bool;
     }
+    setState(() {
+      isLoading = false;
+    });
     listOfAllCoins.notifyListeners();
   }
 
@@ -124,6 +144,12 @@ class _OverviewState extends State<Overview> {
                     ),
                   ),
                 )),
+                Visibility(
+                  visible: isLoading,
+                  child: Center(
+                      child: LoadingAnimationWidget.waveDots(
+                          color: Colors.white, size: 45)),
+                )
               ]),
             ],
           ),
