@@ -52,7 +52,7 @@ class Coins extends StatelessWidget {
                   color: Color.fromARGB(210, 161, 255, 208),
                   text: "Buy your first Coins",
                   onPressed: () {
-                    Navigator.pushNamed(context, "/buy");
+                    Navigator.pushNamed(context, "/bu");
                   }),
             )
           ])),
