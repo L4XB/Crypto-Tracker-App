@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 class Userprovider {
   //BaseURL
-  String baseURL = "http://h2980175.stratoserver.net/users";
+  String baseURL = "ur api url";
 
   //Create User
   Future<bool?> createUser(User user) async {
@@ -51,8 +51,7 @@ class Userprovider {
         user.age = body["age"];
         user.mail = body["email"];
         user.name = body["name"];
-        user.avatarUrl =
-            "http://h2980175.stratoserver.net/users/" + body["_id"] + "/avatar";
+        user.avatarUrl = "" + body["_id"] + "/avatar";
         currentUser = user;
         sessionToken = bodyToken["token"];
       } catch (e) {
